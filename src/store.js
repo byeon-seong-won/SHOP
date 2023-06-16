@@ -1,5 +1,5 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit'
-import { useDebugValue, useEffect } from 'react'
+import { useDebugValue, useEffect, useReducer } from 'react'
 import { useDispatch } from 'react-redux'
 
 
@@ -31,6 +31,8 @@ export let {secoModal} = secomodal.actions
 
 
 
+
+
 let cart = createSlice({
   name : 'cart',
   initialState : [
@@ -38,14 +40,13 @@ let cart = createSlice({
     {id : 1, name : "lake house", count : 1, price :2000}
   ] ,
   reducers : {
+    // 장바구니 상품 수량 증가
     incCount(state, action){
       let 번호 = state.findIndex((a)=>{ return a.id === action.payload })
       state[번호].count++
-      
-      let 추가금액 = state[번호].price + state[번호].price - state[번호].price
-      console.log(추가금액)
     },
 
+    // 장바구니 상품 수량 감소
     decCount(state, action){
       let 번호 = state.findIndex((a)=>{ return a.id === action.payload })
       state[번호].count--
@@ -54,7 +55,6 @@ let cart = createSlice({
         alert('안됨')
       }
     },
-
     // 장바구니 상품 삭제
     remove(state, action) {
       state.splice(action.payload,1)
@@ -74,7 +74,7 @@ let cart = createSlice({
   }})
 
 
-export let {incCount,decCount,remove,addItem} = cart.actions
+export let {incCount,decCount,remove,addItem,incPrice,desPrice} = cart.actions
 
 
 
