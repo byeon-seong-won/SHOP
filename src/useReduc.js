@@ -1,42 +1,57 @@
-import { useReducer } from 'react';
-
+// import { useReducer } from 'react';
+import {INCREASE} from './acions/index'
+import {initialState} from './acions/index.js'
 
 
 // useReducer (수량 따른 금액 변화)
 
-const priceCounter = () => {
-    const reducer = (state, action) => {
-      if(action == "plusProduct") {
-        state = {
-          ...state,
-          count : state.count + 1,
-          price : state.price + price
-        };
-      }
-      if(action == "minusProduct") {
-        state = {
-          ...state,
-          count : state.count - 1,
-          price : state.price - price
-        };
-      }
-      return state;
-    }
+// const useCounter = () => {
+//     const reducer = (state, action) => {
+//       if(action == "plusProduct") {
+//         state = {
+//           ...state,
+//           count : state.count + 1
+//         };
+//       }
+//       if(action == "minusProduct") {
+//         state = {
+//           ...state,
+//           count : state.count - 1
+//         };
+//       }
+//       return state;
+//     }
 
-  // const initialState = {
-  //   oneprocount : 0,
-  //   twoprocount : 1000
-  // };
+//   const [state, dispatch] = useReducer(reducer, {
+//     count : 0
+//   })
   
-  const [state, dispatch] = useReducer(reducer, {
-    count : 0,
-    price : 1000
-  })
+//   return {
+//     state,
+//     action : dispatch
+//   }
+// }
   
-  return {
-    state,
-    action : dispatch
+//   export default useCounter
+
+
+
+
+// reducer
+const itemReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case INCREASE:
+      let idx = state.items.findIndex(
+        (el) => el.itemId == action.payload.itemId
+      );
+      if(idx !== -1) {
+        state.items[idx].count ++;
+      }
+      return Object.assign({}, state, {
+        items : [...state.items],
+      })
   }
 }
-  
-  export default priceCounter
+
+
+export default itemReducer;
