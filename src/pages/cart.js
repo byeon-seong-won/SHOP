@@ -1,37 +1,66 @@
 import { useSelector, useDispatch} from 'react-redux'
-import { remove,incCount,decCount,modalOpen,incPrice,desPrice } from './../store.js'
+import { remove,incCount,decCount,modalOpen,incPrice,desPrice} from './../store.js'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import priceCounter from './../useReduc.js'
+// import useCounter from './../useReduc.js'
+import itemReducer from './../useReduc.js'
+import {increase} from './../acions/index.js'
 
 
 
 
+function Counter(props) {
+  let dispatch= useDispatch()
+  const {state, action} = itemReducer();
 
-  function Counter() {
-    const {state, action} = priceCounter();
-  
     return (
-      <div className='countBtn'>
-          <span className='xiarr xi-angle-up-thin' onClick={()=> {
-            action("plusProduct")
-          }}></span>
-          <span> 
-            {state.count}
-          </span> 
-          <span className='xiarr xi-angle-down-thin' onClick={()=> {
-            action("minusProduct")
-          }}></span>
-            {state.price}
-          <div className='priceBtn'>
-            <span></span>
-            <span className='xiclose xi-close-thin' onClick={()=> {
-              
+        <div className='countBtn'>
+            <span className='xiarr xi-angle-up-thin' onClick={()=> {
+              // action("plusProduct")0
+              dispatch(increase(props.cart))
             }}></span>
-          </div>
-      </div>
-    )
-  }
+            <span> 
+              {/* {state.count} */}
+            </span> 
+            <span className='xiarr xi-angle-down-thin' onClick={()=> {
+              // action("minusProduct")
+            }}></span>
+              {/* {state.price} */}
+            <div className='priceBtn'>
+              <span></span>
+              <span className='xiclose xi-close-thin' onClick={()=> {
+                
+              }}></span>
+            </div>
+        </div>
+      )
+}
+
+  // function Counter() {
+  //   // const {state, action} = useCounter();
+  
+  //   return (
+  //     <div className='countBtn'>
+  //         <span className='xiarr xi-angle-up-thin' onClick={()=> {
+  //           // action("plusProduct")0
+  //           dispatch(increase())
+  //         }}></span>
+  //         <span> 
+  //           {state.count}
+  //         </span> 
+  //         <span className='xiarr xi-angle-down-thin' onClick={()=> {
+  //           action("minusProduct")
+  //         }}></span>
+  //           {/* {state.price} */}
+  //         <div className='priceBtn'>
+  //           <span></span>
+  //           <span className='xiclose xi-close-thin' onClick={()=> {
+              
+  //           }}></span>
+  //         </div>
+  //     </div>
+  //   )
+  // }
   
 
 
@@ -93,9 +122,7 @@ function Cart(props) {
                     }}>{cart[i].name}</span>
                   </div>
                     
-
-
-                    <Counter></Counter>
+                    <Counter cart={cart[i].id}></Counter>
                   {/* <div className='countBtn'>
                     <span className='xiarr xi-angle-up-thin' onClick={()=> {
                       dispatch(incCount(cart[i].id))
