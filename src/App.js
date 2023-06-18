@@ -7,7 +7,7 @@ import Cart from './pages/cart.js'
 import { Routes, Route, useNavigate} from 'react-router-dom'
 
 import data from './data.js'
-
+import { increase, decrease } from "./index";
 
 
 
@@ -46,6 +46,19 @@ function App(){
   }
   let [more, setMore] = useState('')
   console.log(more)
+
+
+  const dispatch = useDispatch(); // store의 dispatch 함수 사용
+  // store 객체의 getState() 역할
+  const state = useSelector((state) => state); // store에 있는 state 값을 가져오는 역할
+  
+  const plusNum = () => {
+    dispatch(increase());
+  };
+
+  const minusNum = () => {
+    dispatch(decrease());
+  };
 
 
 
