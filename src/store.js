@@ -33,6 +33,13 @@ export let {secoModal} = secomodal.actions
 
 
 
+
+
+
+
+
+
+
 let cart = createSlice({
   name : 'cart',
   initialState : [
@@ -40,16 +47,19 @@ let cart = createSlice({
     {id : 1, name : "lake house", count : 1, price :2000}
   ] ,
   reducers : {
+
     // 장바구니 상품 수량 증가
-    incCount(state, action){
-      let 번호 = state.findIndex((a)=>{ return a.id === action.payload })
-      state[번호].count++
-    },
+    // incCount(state, action){
+    //   let 번호 = state.findIndex((a)=>{ return a.id === action.payload })
+    //   state[번호].count++
+    //   state[번호].price = state[번호].price + state[번호].price
+    // },
 
     // 장바구니 상품 수량 감소
     decCount(state, action){
       let 번호 = state.findIndex((a)=>{ return a.id === action.payload })
       state[번호].count--
+      state[번호].price = state[번호].price - state[번호].price
       if(state[번호].count < 1) {
         // dispatch(modalOpen(true))
         alert('안됨')
