@@ -1,8 +1,19 @@
-import { useDispatch } from "react-redux"
 
 
 
-// action
+
+
+export const decrease = (itemId) => {
+  return {
+    type : "DECREASE",
+    payload : {
+      itemId,
+      count: 1,
+    }
+  }
+}
+
+
 export const increase = (itemId) => {
   return {
     type : "INCREASE",
@@ -14,33 +25,24 @@ export const increase = (itemId) => {
 }
 
 
-// dispatch
+export const openfirstmo = (status) => {
+  return {
+    type : "OPEN_FIRSTMO",
+    payload : status
+  }
+}
 
-// const dispatch = useDispatch()
-// dispatch(increase())
-
-
-
-
-
-export const initialState = {
-  items : [
-    {
-      itemId : 0,
-      name : "THERE THERE Music Pub",
-      count : 1,
-      price : 1000
-    },
-  
-    {
-      itemId : 1,
-      name : "lake house",
-      count : 1,
-      price : 2000
-    },
-  ]
+export const opensecomo = (status) => {
+  return {
+    type : "OPEN_SECOMO",
+    payload : status
+  }
 }
 
 
-
-
+export const hovermo = (status) => {
+  return {
+    type : "HOVER_MO",
+    payload : status
+  }
+}

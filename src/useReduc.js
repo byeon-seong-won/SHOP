@@ -1,6 +1,6 @@
 // import { useReducer } from 'react';
-import {INCREASE} from './actions/index'
-import {initialState} from './actions/index.js'
+// import {INCREASE} from './actions/index'
+// import {initialState} from './actions/index.js'
 
 
 // useReducer (수량 따른 금액 변화)
@@ -38,20 +38,20 @@ import {initialState} from './actions/index.js'
 
 
 // reducer
-const itemReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case INCREASE:
-      let idx = state.items.findIndex(
-        (el) => el.itemId == action.payload.itemId
-      );
-      if(idx !== -1) {
-        state.items[idx].count ++;
-      }
-      return Object.assign({}, state, {
-        items : [...state.items],
-      })
-  }
-}
+// const itemReducer = (state = initialState, action) => {
+//   switch (action.type) {
+//     case INCREASE:
+//       let idx = state.items.findIndex(
+//         (el) => el.itemId == action.payload.itemId
+//       );
+//       if(idx !== -1) {
+//         state.items[idx].count ++;
+//       }
+//       return Object.assign({}, state, {
+//         items : [...state.items],
+//       })
+//   }
+// }
 
 
-export default itemReducer;
+// export default itemReducer;
