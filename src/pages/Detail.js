@@ -6,12 +6,12 @@ import Gallery from '../img.js'
 
 
 
-const Detail = ({pic}) => {
+const Detail = ({pic, openfirstmo, opensecomo}) => {
 
   let {id} = useParams(null); 
   let [tab, setTab] = useState(0)
-  let modal = useSelector((state) => {return state.modal})
-  let secomodal = useSelector((state) => {return state.secomodal})
+  // let modal = useSelector((state) => {return state.modal})
+  // let secomodal = useSelector((state) => {return state.secomodal})
   let [pro,setPro] = useState('0')
   let navi = useNavigate()
   let dispatch = useDispatch()
@@ -24,8 +24,8 @@ const Detail = ({pic}) => {
   return(
     <div className="container">
       {/* 모달창 팝업 */}
-      { modal == true ? <Shopmodal pro={pro}></Shopmodal> : null }
-      { secomodal == true ? <Secomodal></Secomodal> : null }
+      { openfirstmo == true ? <Shopmodal pro={pro}></Shopmodal> : null }
+      { opensecomo == true ? <Secomodal></Secomodal> : null }
 
       <div className="detailWrap">
         {/* 상단 이미지와 설명 */}

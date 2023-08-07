@@ -22,7 +22,10 @@ function App() {
 
   let [pic, setPic] = useState(data)
   const hvmodalstate = useSelector(state => state.hvmodalstate)
-  
+  // const modalstateFir = useSelector(state => state.modalstate.firmodal)
+  // const modalstateSec = useSelector(state => state.modalstate.secomodal)
+
+
   let [tab,setTab] = useState(0)
   let [currenttab, clickTab] = useState(0)
   let [tabbtn] = useState(['sunset', 'travel', 'light', 'daily', 'winter'])
@@ -198,7 +201,7 @@ function App() {
           />
 
           {/* 상세페이지 */}
-          <Route path="/detail/:id" element={<Detail pic={pic}/>}/>
+          <Route path="/detail/:id" element={<Detail pic={pic} openfirstmo={openfirstmo} opensecomo={opensecomo}/>}/>
           {/* 장바구니페이지 */}
           <Route path='/cart' element={<Cart/>}/> 
           <Route path='*' element={<div>없는 페이지</div>} />
