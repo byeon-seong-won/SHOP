@@ -3,7 +3,7 @@
 
 
 const modalinitialState = {
-    modal : [
+    firmodal : [
       {
         status : false
       }
