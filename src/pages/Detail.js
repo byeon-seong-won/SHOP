@@ -103,7 +103,7 @@ const Detail = ({pic}) => {
 
 
 // 하단 탬 컨텐츠
-function Tabcont({tab, pic}) {
+const Tabcont = ({tab, pic}) => {
 
   let [fade1,setFade1] = useState('')
   let [color, setColor] = useState('')
@@ -140,7 +140,7 @@ function Tabcont({tab, pic}) {
     return()=> {
       setFade1('')
     }
-  },[{tab}])
+  },[tab])
 
 
   return(
@@ -241,7 +241,7 @@ function Tabcont({tab, pic}) {
               <li className={ liclick == 6? 'on' : null}>작품 선택일로부터 영업일 기준 5일 전후 수령 가능합니다.</li>
             </ul>
           </div>
-      ][{tab}]
+      ][tab]
     }
   </div>
   )
@@ -250,7 +250,7 @@ function Tabcont({tab, pic}) {
 
 
 // 장바구니 담기 모달창 component
-function Shopmodal({pro}) {
+const Shopmodal = ({pro}) => {
 
   let dispatch= useDispatch()
 
@@ -280,7 +280,7 @@ function Shopmodal({pro}) {
 
 
 // 장바구니 이동 모달창 component
-function Secomodal() {
+const Secomodal = () => {
 
   let dispatch= useDispatch()
   let navi = useNavigate()
@@ -309,4 +309,4 @@ function Secomodal() {
 
 
 
-export {Detail}
+export {Detail,Tabcont,Shopmodal,Secomodal}
