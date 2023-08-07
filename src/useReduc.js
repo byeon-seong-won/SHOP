@@ -1,6 +1,6 @@
 // import { useReducer } from 'react';
-import {INCREASE} from './acions/index'
-import {initialState} from './acions/index.js'
+import {INCREASE} from './actions/index'
+import {initialState} from './actions/index.js'
 
 
 // useReducer (수량 따른 금액 변화)

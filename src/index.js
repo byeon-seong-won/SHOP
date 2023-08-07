@@ -50,7 +50,7 @@ const reducer = (state = count, action) => {
 const rootElement = ReactDOM.createRoot(document.getElementById('root'));
 
 const root = createRoot(rootElement);
-const store = createStore();
+// const store = createStore();
 
 
 root.render(

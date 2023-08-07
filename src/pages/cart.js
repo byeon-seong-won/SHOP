@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 // import useCounter from './../useReduc.js'
 import itemReducer from './../useReduc.js'
-import {increase} from './../acions/index.js'
+import {increase} from '../actions/index.js'
 
 
 
