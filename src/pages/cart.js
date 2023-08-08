@@ -1,6 +1,6 @@
 
 import { useSelector, useDispatch} from 'react-redux'
-import { remove,incCount,decCount,modalOpen } from './../store.js'
+import {modalActions, secomodalActions,cartActions} from '../store.js'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -58,18 +58,18 @@ function Cart(props) {
                     
                   <div className='countBtn'>
                     <span className='xiarr xi-angle-up-thin' onClick={()=> {
-                      dispatch(incCount(cart[i].id))
+                      dispatch(cartActions.incCount(cart[i].id))
                     }}></span>
                     <span>{cart[i].count}</span> 
                     <span className='xiarr xi-angle-down-thin' onClick={()=> {
-                      dispatch(decCount(cart[i].id))
+                      dispatch(cartActions.decCount(cart[i].id))
                     }}></span>
                   </div>
                   
                   <div className='priceBtn'>
                     <span>{cart[i].price}원</span>
                     <span className='xiclose xi-close-thin' onClick={()=> {
-                      dispatch(modalOpen(true)); setNum(i)
+                      dispatch(modalActions.modalOpen(true)); setNum(i)
                       document.body.style.overflow = "hidden";
                     }}></span>
                   </div>
@@ -117,12 +117,12 @@ function Countmodal(props) {
             <h5>"{props.cart[props.num].name}" 을 삭제하시겠습니까?</h5>
             <ul>
               <li onClick={()=> {
-                dispatch(modalOpen(false));
+                dispatch(modalActions.modalOpen(false));
                 document.body.style.overflow = "unset";
               }}>취소</li>
               <li onClick={ ()=> {
-                dispatch(remove(props.num))
-                dispatch(modalOpen(false));
+                dispatch(cartActions.remove(props.num))
+                dispatch(modalActions.modalOpen(false));
                 document.body.style.overflow = "unset";
               }}>확인</li>
             </ul>

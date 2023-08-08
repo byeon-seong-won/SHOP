@@ -1,7 +1,7 @@
 import { useParams, useNavigate} from "react-router-dom"
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch} from 'react-redux'
-import {secoModal, modalOpen,addItem} from '../store.js'
+import {modalActions, secomodalActions,cartActions} from '../store.js'
 import Gallery from '../img.js'
 
 
@@ -66,12 +66,12 @@ function Detail(props) {
 
             <button className="btn btnPur" onClick={ ()=> {
               let addpro = props.shoes[id]
-              dispatch(addItem(addpro))
+              dispatch(cartActions.addItem(addpro))
               navi('/cart')
             }}>구매하기</button> 
             <button className="btn btnCart" onClick={ ()=> {
               let addpro = props.shoes[id]
-              dispatch(modalOpen(true)); 
+              dispatch(modalActions.modalOpen(true)); 
               setPro(addpro)
               document.body.style.overflow = "hidden";
             }}>장바구니 담기</button> 
@@ -262,13 +262,13 @@ function Shopmodal(props) {
             <h5>"{props.pro.name}" 을 장바구니에 담으시겠습니까?</h5>
             <ul>
               <li onClick={()=> {
-                dispatch(modalOpen(false));
+                dispatch(modalActions.modalOpen(false));
                 document.body.style.overflow = "unset";
               }}>취소</li>
               <li onClick={ ()=> {
-                dispatch(modalOpen(false));
-                dispatch(addItem(props.pro))
-                dispatch(secoModal(true))
+                dispatch(modalActions.modalOpen(false));
+                dispatch(cartActions.addItem(props.pro))
+                dispatch(secomodalActions.secoModal(true))
                 document.body.style.overflow = "hidden";
               }}>확인</li>
             </ul>
@@ -293,11 +293,11 @@ function Secomodal() {
             <h5>장바구니로 이동하시겠습니까?</h5>
             <ul>
               <li onClick={()=> {
-                dispatch(secoModal(false));
+                dispatch(secomodalActions.secoModal(false));
                 document.body.style.overflow = "unset";
               }}>취소</li>
               <li onClick={ ()=> {
-                dispatch(secoModal(false));
+                dispatch(secomodalActions.secoModal(false));
                 document.body.style.overflow = "unset";
                 navi('/cart')
               }}>확인</li>

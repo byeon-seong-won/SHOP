@@ -4,54 +4,70 @@ import { useDispatch } from 'react-redux'
 
 
 
+
+
 // 상세페이지 장바구니 담기 모달창
-let modal = createSlice({
+const modalinitialState = {
+    status : false
+}
+let modalSlice = createSlice({
   name : 'modal',
-  initialState : false,
+  initialState : modalinitialState,
   reducers : {
     modalOpen(state,status) {
        return state = status.payload
     }
   }
 })
-export let {modalOpen} = modal.actions
+
+
+
+
 
 
 // 상세페이지 장바구니 이동 모달창
-let secomodal = createSlice({
+const secomodalinitialState = {
+    status : false
+}
+let secomodalSlice = createSlice({
   name : 'secomodal',
-  initialState : 'false',
+  initialState : secomodalinitialState,
   reducers : {
     secoModal(state, status) {
       return state = status.payload
     }
   }
 })
-export let {secoModal} = secomodal.actions
 
 
 
-let cart = createSlice({
+
+
+const cartinitialState = 
+    [
+        {id : 0, name : 'THERE THERE Music Pub', count :1, price :1000},
+        {id : 1, name : "lake house", count : 1, price :2000}
+    ]
+let cartSlice = createSlice({
   name : 'cart',
-  initialState : [
-    {id : 0, name : 'THERE THERE Music Pub', count :1, price :1000},
-    {id : 1, name : "lake house", count : 1, price :2000}
-  ] ,
+  initialState : cartinitialState,
   reducers : {
     incCount(state, action){
-      let 번호 = state.findIndex((a)=>{ return a.id === action.payload })
-      state[번호].count++
+      let idx = state.findIndex((a)=>{ return a.id === action.payload })
+      state[idx].count++
       
-      let 추가금액 = state[번호].price + state[번호].price - state[번호].price
-      console.log(추가금액)
+      let plusMoney = state[idx].count * state[idx].price
+      console.log(plusMoney)
+      state[idx].count = plusMoney;
     },
 
     decCount(state, action){
-      let 번호 = state.findIndex((a)=>{ return a.id === action.payload })
-      state[번호].count--
-      if(state[번호].count < 1) {
+      let idx = state.findIndex((a)=>{ return a.id === action.payload })
+      state[idx].count--
+      if(state[idx].count < 1) {
         // dispatch(modalOpen(true))
         alert('안됨')
+        state[idx].count = 1;
       }
     },
 
@@ -62,26 +78,31 @@ let cart = createSlice({
 
     // 장바구니 상품 담기
     addItem(state,action) {
-      let 중복 = state.findIndex( (x)=> {return x.name == action.payload.name})
-      console.log('중복' + 중복)
-      if(중복 == -1) {
+      let exi = state.findIndex( (x)=> {return x.name == action.payload.name})
+      console.log('중복' + exi)
+      if(exi == -1) {
         state.push(action.payload)
       } else {
-        state[중복].count++
+        state[exi].count++
       }
-      
     }
+    
   }})
 
 
-export let {incCount,decCount,remove,addItem} = cart.actions
+  
 
+  const store =  configureStore ({
+    reducer : {
+        cart : cartSlice.reducer,
+        modal : modalSlice.reducer,
+        secomodal : secomodalSlice.reducer
+    }
+  })
 
+  export const modalActions = modalSlice.actions
+  export const secomodalActions = secomodalSlice.actions
+  export const cartActions = cartSlice.actions
+  export default store;
 
-export default configureStore ({
-  reducer : {
-    cart : cart.reducer,
-    modal : modal.reducer,
-    secomodal : secomodal.reducer
-  }
-})
+ 
