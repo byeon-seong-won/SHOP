@@ -50,7 +50,10 @@ Detail Page에서 같은 상품을 주문하면 항목추가가 아닌 수량증
   Cart page 수량증감 버튼 동작 안 되는 부분 해결
 </li>
 <li>
-  기존 props로 되어있는 부분 일부 redux로 수정
+  createSlice를 컴포넌트별로 새로운 파일로 빼둠
+</li>
+<li>
+  App.js 컴포넌트 새로운 파일로 빼둠
 </li>
 
 
