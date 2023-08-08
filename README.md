@@ -9,7 +9,7 @@ React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하�
 : 총 3 페이지 (Home | Detail | Cart)
 
 
-<h2>Home Page</h2>
+<ul>Home Page</ul>
 해당 컴포넌트 : 
 <li>Router를 이용해 페이지 나누기</li>
 useState를 통해 데이터 관리
