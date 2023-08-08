@@ -9,21 +9,22 @@ React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하�
 : 총 3 페이지 (Home | Detail | Cart)
 
 
- Home Page
-해당 컴포넌트 : 
+ Home Page (App.js)
 <li>Router를 이용해 페이지 나누기</li>
-useState과 redux를 통해 데이터 관리
-- 비교적 자주 주고받지 않는 데이터들은 useState를 통해 관리하고, 자주쓰이는 데이터들은 redux를 통해 관리
-axios get을 통해 상품 데이터 보여주기(+map 반복문으로 레이아웃 구성)
-상품 더보기 버튼 구현(+준비된 데이터가 끝나면 버튼 없애기)
-정렬 버튼 구현(가격순|abc순|cba순|11만원이하|원래대로) {SortBtns.js}
-상품 이미지를 클릭하면 해당 상품 Detail page로 이동
-재고 데이터 표시
-top menu 항목 클릭시 해당하는 컨텐츠 표시(페이지 이동/모달창)
-로그인(모달창) 정규식 검사(이메일 형식/비밀번호 대문자 포함 체크) {LoginForm.js}
+<li>node.js와 mysql 연동으로 DB에 있는 데이터로 가져오기</li>
+<li>DB 데이터를 이용해 최근본상품 구현</li>
+<li>로그인 기능</li>
+<li>createSlice.js 파일과 컴포넌트를 분리/li>
+<li>axios get을 통해 상품 데이터 "더보기" 버튼 클릭시 보여주기(+map 반복문으로 레이아웃 구성)</li>
+<li>상품 더보기 버튼 구현(+준비된 데이터가 끝나면 버튼 없애기)</li>
+<li>정렬 버튼 구현(가격순|abc순|cba순|11만원이하|원래대로) {SortBtns.js}</li>
+<li>상품 이미지를 클릭하면 해당 상품 Detail page로 이동</li>
+<li>재고 데이터 표시</li>
+<li>top menu 항목 클릭시 해당하는 컨텐츠 표시(페이지 이동/모달창)</li>
+<li>로그인(모달창) 정규식 검사(이메일 형식/비밀번호 대문자 포함 체크) {LoginForm.js}</li>
 
 
-Detail Page
+Detail Page (detail.js)
 useEffect를 활용해 페이지가 로드되면 알림창 띄우기 + 애니메이션 효과
 주문하기 버튼 클릭시 재고가 줄어듦 + Cart page로 이동 + 장바구니 리스트에 담김(dispatch로 데이터 전송 -> redux로 상태관리)
 select box에서 선택한 사이즈 값 장바구니로 전달
@@ -32,7 +33,7 @@ select box에서 선택한 사이즈 값 장바구니로 전달
 탭 기능 구현(+애니메이션 효과)
 
 
-Cart Page
+Cart Page (cart.js)
 redux로 상태관리(index.js)
 수량 변경 버튼(+수량이 음수가 되지 않도록 조절하는 기능)
 Detail Page에서 같은 상품을 주문하면 항목추가가 아닌 수량증가가 되는 기능
@@ -50,10 +51,10 @@ Detail Page에서 같은 상품을 주문하면 항목추가가 아닌 수량증
   Cart page 수량증감 버튼 동작 안 되는 부분 해결
 </li>
 <li>
-  createSlice를 컴포넌트별로 새로운 파일로 빼둠
+  createSlice를 컴포넌트별로 새로운 파일로 분리
 </li>
 <li>
-  App.js 컴포넌트 새로운 파일로 빼둠
+  App.js 컴포넌트 새로운 파일로 분리
 </li>
 
 
