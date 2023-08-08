@@ -9,6 +9,10 @@ import { Routes, Route, useNavigate} from 'react-router-dom'
 import data from './data.js'
 
 
+// 컴포넌트
+import { Footer } from './component/footer';
+import { Nav } from './component/header';
+import { Tabcont } from './component/tabContent';
 
 
 function App(){
@@ -188,7 +192,7 @@ function App(){
     )
   }
 
-export default App;
+
 
 
 // 중간 컨텐츠 component
@@ -223,27 +227,7 @@ let navi = useNavigate()
 
 
 
-// nav바 component
-function Nav() {
 
-  let navi = useNavigate()
-
-  return(
-    <nav className='navBar'>
-      <p onClick={()=> {navi('/')}}>wwpi.c</p>
-      <ul>
-        <li onClick={()=> {navi('/cart')}}>
-          <i className="fa fa-shopping-cart"></i>
-          CART
-        </li>
-        <li>
-          <i className="fa fa-user"></i>
-          LOGIN
-        </li>
-      </ul>
-    </nav>
-  )
-}
 
 
 // 중간 컨텐츠 - 호버시 모달창 component
@@ -260,88 +244,5 @@ function Hovermodal({num,shoes}) {
 }
 
 
-// 하단 photo type 탭 컨텐츠
-function Tabcont({tab}) {
-  return(
-    <div>
-      {[
-        <div className='tabImg'>
-          <img src={process.env.PUBLIC_URL + '/pic_10.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_2.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_3.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_16.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_11.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_14.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_26.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_27.png'}/>
-        </div>, 
-        <div className='tabImg'>
-          <img src={process.env.PUBLIC_URL + '/pic_5.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_6.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_4.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_19.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_21.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_30.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_31.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_32.png'}/>
-        </div>,
-        <div className='tabImg'>
-          <img src={process.env.PUBLIC_URL + '/pic_7.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_13.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_24.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_22.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_6.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_4.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_12.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_27.png'}/>
-        </div>,
-        <div className='tabImg'>
-          <img src={process.env.PUBLIC_URL + '/pic_17.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_9.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_1.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_8.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_18.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_12.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_23.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_24.png'}/>
-        </div>,
-        <div className='tabImg'>
-          <img src={process.env.PUBLIC_URL + '/pic_15.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_20.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_28.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_29.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_17.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_18.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_12.png'}/>
-          <img src={process.env.PUBLIC_URL + '/pic_22.png'}/>
-        </div>
-      ][tab]
-    }
-    </div>
-  ) 
-}
 
-
-
-// footer
-function Footer() {
-  let navi = useNavigate()
-  const url = "https://www.instagram.com/wwpi.c"
-
-  return(
-    <div className='footer'>
-      <div>
-        <h3 onClick={()=> {navi('/')}}>wwpi.c
-          <i className="fa fa_insta fa-instagram" onClick={()=> {
-            window.open(url)
-          }}></i>
-        </h3>
-      </div>
-      <hr></hr>
-      <p>
-        사진찍기를 좋아하는 사람의 평범한 일상 속 순간들입니다.<br/>
-        인스타그램에서 더 많은 순간들을 만나보세요.
-      </p>
-    </div>
-  )
-}
+export default App;
