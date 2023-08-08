@@ -1,4 +1,4 @@
-<h1>Shopping Mall</h1>
+<h1> Shopping Mall</h1>
 : React를 활용한 사진 쇼핑몰 SPA (PWA 셋팅)
 React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하기
 
@@ -9,7 +9,7 @@ React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하�
 : 총 3 페이지 (Home | Detail | Cart)
 
 
-<ul>Home Page</ul>
+ Home Page
 해당 컴포넌트 : 
 <li>Router를 이용해 페이지 나누기</li>
 useState를 통해 데이터 관리
@@ -22,7 +22,7 @@ top menu 항목 클릭시 해당하는 컨텐츠 표시(페이지 이동/모달�
 로그인(모달창) 정규식 검사(이메일 형식/비밀번호 대문자 포함 체크) {LoginForm.js}
 
 
-<h2>Detail Page</h2>
+Detail Page
 useEffect를 활용해 페이지가 로드되면 알림창 띄우기 + 애니메이션 효과
 주문하기 버튼 클릭시 재고가 줄어듦 + Cart page로 이동 + 장바구니 리스트에 담김(dispatch로 데이터 전송 -> redux로 상태관리)
 select box에서 선택한 사이즈 값 장바구니로 전달
@@ -31,7 +31,7 @@ select box에서 선택한 사이즈 값 장바구니로 전달
 탭 기능 구현(+애니메이션 효과)
 
 
-<h2>Cart Page</h2>
+Cart Page
 redux로 상태관리(index.js)
 수량 변경 버튼(+수량이 음수가 되지 않도록 조절하는 기능)
 Detail Page에서 같은 상품을 주문하면 항목추가가 아닌 수량증가가 되는 기능
