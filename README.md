@@ -10,18 +10,18 @@ React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하�
 
 
  Home Page (App.js)
-<li>Router를 이용해 페이지 나누기</li>
-<li>node.js와 mysql 연동으로 DB에 있는 데이터로 가져오기</li>
-<li>DB 데이터를 이용해 최근본상품 구현</li>
-<li>로그인 기능</li>
-<li>createSlice.js 파일과 컴포넌트를 분리/li>
-<li>axios get을 통해 상품 데이터 "더보기" 버튼 클릭시 보여주기(+map 반복문으로 레이아웃 구성)</li>
-<li>상품 더보기 버튼 구현(+준비된 데이터가 끝나면 버튼 없애기)</li>
-<li>정렬 버튼 구현(가격순|abc순|cba순|11만원이하|원래대로) {SortBtns.js}</li>
-<li>상품 이미지를 클릭하면 해당 상품 Detail page로 이동</li>
-<li>재고 데이터 표시</li>
-<li>top menu 항목 클릭시 해당하는 컨텐츠 표시(페이지 이동/모달창)</li>
-<li>로그인(모달창) 정규식 검사(이메일 형식/비밀번호 대문자 포함 체크) {LoginForm.js}</li>
+<p>Router를 이용해 페이지 나누기</p>
+<p>node.js와 mysql 연동으로 DB에 있는 데이터로 가져오기</p>
+<p>DB 데이터를 이용해 최근본상품 구현</p>
+<p>로그인 기능</p>
+<p>createSlice.js 파일과 컴포넌트를 분리/p>
+<p>axios get을 통해 상품 데이터 "더보기" 버튼 클릭시 보여주기(+map 반복문으로 레이아웃 구성)</p>
+<p>상품 더보기 버튼 구현(+준비된 데이터가 끝나면 버튼 없애기)</p>
+<p>정렬 버튼 구현(가격순|abc순|cba순|11만원이하|원래대로) {SortBtns.js}</p>
+<p>상품 이미지를 클릭하면 해당 상품 Detail page로 이동</p>
+<p>재고 데이터 표시</p>
+<p>top menu 항목 클릭시 해당하는 컨텐츠 표시(페이지 이동/모달창)</p>
+<p>로그인(모달창) 정규식 검사(이메일 형식/비밀번호 대문자 포함 체크) {LoginForm.js}</p>
 
 
 Detail Page (detail.js)
