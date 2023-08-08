@@ -5,9 +5,9 @@ React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하�
 [개인 프로젝트: 2023.06.27~]
 
 
-<h1>Pages</h1>
+<h1>🔥 Pages 🔥</h1>
 : 총 3 페이지 (Home | Detail | Cart)
-
+<br>
 
 🔧 Home Page (App.js)
 <p>- Router를 이용해 페이지 나누기</p>
