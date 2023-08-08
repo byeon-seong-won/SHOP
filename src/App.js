@@ -1,39 +1,19 @@
 import './App.css';
-import { useSelector, useDispatch} from 'react-redux';
 import { useState } from 'react';
 import bg from './main_final_02.png'
 import bg02 from './main_.jpg'
-import {Detail} from './pages/Detail.js'
+import Detail from './pages/Detail.js'
 import Cart from './pages/cart.js'
 import { Routes, Route, useNavigate} from 'react-router-dom'
-import { decrease, increase, openfirstmo, opensecomo, hvmodal } from './actions/index.js'
+
 import data from './data.js'
 
 
 
-// component
-import { Tabcont } from './component/tabContent';
-import { Nav } from './component/header';
-import { Footer } from './component/footer';
-// import { Card } from './component/hovermodal';
 
+function App(){
 
-function App() {
-
-  let [pic, setPic] = useState(data)
-  const hvmodalstate = useSelector(state => state.hvmodalstate)
-  // const modalstateFir = useSelector(state => state.modalstate.firmodal)
-  // const modalstateSec = useSelector(state => state.modalstate.secomodal)
-
-
-  let [tab,setTab] = useState(0)
-  let [currenttab, clickTab] = useState(0)
-  let [tabbtn] = useState(['sunset', 'travel', 'light', 'daily', 'winter'])
-  let buttonHandle = (index) => {
-    clickTab(index)
-  }
-
-
+  let [shoes, setShoes] = useState(data)
   {/* mysql - node.js 연동 */}
   // const [shoes, setShoes] = useState([
   //   {
@@ -56,29 +36,16 @@ function App() {
   {/* mysql - node.js 연동 */}
 
 
-  // 디스패치 함수
-  const dispatch = useDispatch();
-  const decrease = (state) => dispatch(decrease(state));
-  const increase = (color) => dispatch(increase(color));
-  const openfirstmo = (status) => dispatch(openfirstmo(status));
-  const opensecomo = (status) => dispatch(opensecomo(status));
-  const hvmodal = (status) => dispatch(hvmodal(status))
-
-  // let [more, setMore] = useState('')
 
 
-
-  // const dispatch = useDispatch(); 
-
-  // const state = useSelector((state) => state); 
-  
-  // const plusNum = () => {
-  //   dispatch(increase());
-  // };
-
-  // const minusNum = () => {
-  //   dispatch(decrease());
-  // };
+  let [tab,setTab] = useState(0)
+  let [currenttab, clickTab] = useState(0)
+  let [tabbtn] = useState(['sunset', 'travel', 'light', 'daily', 'winter'])
+  let buttonHandle = (index) => {
+    clickTab(index)
+  }
+  let [more, setMore] = useState('')
+  console.log(more)
 
 
 
@@ -100,18 +67,18 @@ function App() {
                 <div className="mainPicture">
                   <div>
                     {
-                      pic.map(function(a,i) {
+                      shoes.slice(0,6).map(function(a,i) {
                         return(
                           <div>
-                            <Card pic={pic[i]} i={i}></Card>
+                            <Card shoes={shoes[i]} i={i}></Card>
                           </div>
                         )
                       })
                     }
-                    {/* <button onClick={()=>{setMore(1)}}>더보기</button> */}
+                    <button onClick={()=>{setMore(1)}}>더보기</button>
                   </div>
 
-                  {/* <div className={more == 1 ? "display" : null}>
+                  <div className={more == 1 ? "display" : null}>
                     {
                       shoes.slice(6,12).map(function(a,i) {
                         return(
@@ -160,7 +127,7 @@ function App() {
                         )
                       })
                     }
-                  </div> */}
+                  </div>
 
                     {/* <button onClick={()=>{
                       setLoad(true)
@@ -201,7 +168,7 @@ function App() {
           />
 
           {/* 상세페이지 */}
-          <Route path="/detail/:id" element={<Detail pic={pic} openfirstmo={openfirstmo} opensecomo={opensecomo}/>}/>
+          <Route path="/detail/:id" element={<Detail shoes={shoes}/>}/>
           {/* 장바구니페이지 */}
           <Route path='/cart' element={<Cart/>}/> 
           <Route path='*' element={<div>없는 페이지</div>} />
@@ -221,43 +188,34 @@ function App() {
     )
   }
 
+export default App;
+
+
 // 중간 컨텐츠 component
 function Card(props) {
 
-  let [numb,setNumb] = useState(0)
-  let [modal,setModal] = useState(false)
-  let navi = useNavigate()
-  
-    return(
-      <div className="picture">
-        <div className='picture_mo'
-          onMouseEnter={()=> {
-            setModal(true);
-            setNumb(props.i);
-          }}
-          onClick={()=> {
-            navi('/detail/' + (props.i))
-          }}
-          onMouseLeave={ ()=> {
-            setModal(false);
-            setNumb(props.i)
-          }}
-          >
-          <img src={'/pic_' + (props.i+1) + '.png'}/>
-          { modal == true? <Hovermodal num={numb} pic={props.pic}></Hovermodal> : null}
-        </div>
-      </div>
-    )
-  }
-// 중간 컨텐츠 - 호버시 모달창 component
-function Hovermodal({num,pic}) {
+let [numb,setNumb] = useState(0)
+let [modal,setModal] = useState(false)
+let navi = useNavigate()
+
   return(
-    <div>
-      {
-        <div className='pictureHv'>
-          <h4>{pic.name}</h4>
-        </div>
-      }
+    <div className="picture">
+      <div className='picture_mo'
+        onMouseEnter={()=> {
+          setModal(true);
+          setNumb(props.i);
+        }}
+        onClick={()=> {
+          navi('/detail/' + (props.i))
+        }}
+        onMouseLeave={ ()=> {
+          setModal(false);
+          setNumb(props.i)
+        }}
+        >
+        <img src={'/pic_' + (props.i+1) + '.png'}/>
+        { modal == true? <Hovermodal num={numb} shoes={props.shoes}></Hovermodal> : null}
+      </div>
     </div>
   )
 }
@@ -265,10 +223,125 @@ function Hovermodal({num,pic}) {
 
 
 
+// nav바 component
+function Nav() {
+
+  let navi = useNavigate()
+
+  return(
+    <nav className='navBar'>
+      <p onClick={()=> {navi('/')}}>wwpi.c</p>
+      <ul>
+        <li onClick={()=> {navi('/cart')}}>
+          <i className="fa fa-shopping-cart"></i>
+          CART
+        </li>
+        <li>
+          <i className="fa fa-user"></i>
+          LOGIN
+        </li>
+      </ul>
+    </nav>
+  )
+}
+
+
+// 중간 컨텐츠 - 호버시 모달창 component
+function Hovermodal({num,shoes}) {
+  return(
+    <div>
+      {
+        <div className='pictureHv'>
+          <h4>{shoes.name}</h4>
+        </div>
+      }
+    </div>
+  )
+}
+
+
+// 하단 photo type 탭 컨텐츠
+function Tabcont({tab}) {
+  return(
+    <div>
+      {[
+        <div className='tabImg'>
+          <img src={process.env.PUBLIC_URL + '/pic_10.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_2.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_3.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_16.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_11.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_14.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_26.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_27.png'}/>
+        </div>, 
+        <div className='tabImg'>
+          <img src={process.env.PUBLIC_URL + '/pic_5.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_6.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_4.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_19.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_21.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_30.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_31.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_32.png'}/>
+        </div>,
+        <div className='tabImg'>
+          <img src={process.env.PUBLIC_URL + '/pic_7.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_13.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_24.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_22.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_6.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_4.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_12.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_27.png'}/>
+        </div>,
+        <div className='tabImg'>
+          <img src={process.env.PUBLIC_URL + '/pic_17.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_9.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_1.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_8.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_18.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_12.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_23.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_24.png'}/>
+        </div>,
+        <div className='tabImg'>
+          <img src={process.env.PUBLIC_URL + '/pic_15.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_20.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_28.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_29.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_17.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_18.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_12.png'}/>
+          <img src={process.env.PUBLIC_URL + '/pic_22.png'}/>
+        </div>
+      ][tab]
+    }
+    </div>
+  ) 
+}
 
 
 
+// footer
+function Footer() {
+  let navi = useNavigate()
+  const url = "https://www.instagram.com/wwpi.c"
 
-
-
-export {App}
+  return(
+    <div className='footer'>
+      <div>
+        <h3 onClick={()=> {navi('/')}}>wwpi.c
+          <i className="fa fa_insta fa-instagram" onClick={()=> {
+            window.open(url)
+          }}></i>
+        </h3>
+      </div>
+      <hr></hr>
+      <p>
+        사진찍기를 좋아하는 사람의 평범한 일상 속 순간들입니다.<br/>
+        인스타그램에서 더 많은 순간들을 만나보세요.
+      </p>
+    </div>
+  )
+}

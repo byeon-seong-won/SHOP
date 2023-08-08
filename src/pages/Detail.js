@@ -6,12 +6,12 @@ import Gallery from '../img.js'
 
 
 
-const Detail = ({pic, openfirstmo, opensecomo}) => {
+function Detail(props) {
 
   let {id} = useParams(null); 
   let [tab, setTab] = useState(0)
-  // let modal = useSelector((state) => {return state.modal})
-  // let secomodal = useSelector((state) => {return state.secomodal})
+  let modal = useSelector((state) => {return state.modal})
+  let secomodal = useSelector((state) => {return state.secomodal})
   let [pro,setPro] = useState('0')
   let navi = useNavigate()
   let dispatch = useDispatch()
@@ -24,15 +24,15 @@ const Detail = ({pic, openfirstmo, opensecomo}) => {
   return(
     <div className="container">
       {/* 모달창 팝업 */}
-      { openfirstmo == true ? <Shopmodal pro={pro}></Shopmodal> : null }
-      { opensecomo == true ? <Secomodal></Secomodal> : null }
+      { modal == true ? <Shopmodal pro={pro}></Shopmodal> : null }
+      { secomodal == true ? <Secomodal></Secomodal> : null }
 
       <div className="detailWrap">
         {/* 상단 이미지와 설명 */}
         <div className="detailCon">
-          <img className="product" src={'/pic_' + (pic[id].id+1) + '.png'} width="100%" />
+          <img className="product" src={'/pic_' + (props.shoes[id].id+1) + '.png'} width="100%" />
           <div>
-            <h4>{pic[id].name}</h4>
+            <h4>{props.shoes[id].name}</h4>
             <table>
               <tr>
                 <td>작가</td>
@@ -40,19 +40,19 @@ const Detail = ({pic, openfirstmo, opensecomo}) => {
               </tr>
               <tr>
                 <td>작품정보</td>
-                <td>{pic[id].name} <br/>(800 x 860), 2022</td>
+                <td>{props.shoes[id].name} <br/>(800 x 860), 2022</td>
               </tr>
               <tr>
                 <td>작품코드</td>
-                <td>2022-A7131{pic[id].id}</td>
+                <td>2022-A7131{props.shoes[id].id}</td>
               </tr>
               <tr>
                 <td>구매가</td>
-                <td>{pic[id].price} 원</td>
+                <td>{props.shoes[id].price} 원</td>
               </tr>
               <tr>
                 <td>렌탈가</td>
-                <td>월 {pic[id].price} 원</td>
+                <td>월 {props.shoes[id].price} 원</td>
               </tr>
               <tr>
                 <td>렌탈기간</td>
@@ -60,17 +60,17 @@ const Detail = ({pic, openfirstmo, opensecomo}) => {
               </tr>
               <tr>
                 <td>최종 구매가</td>
-                <td>{pic[id].price} 원</td>
+                <td>{props.shoes[id].price} 원</td>
               </tr>
             </table>
 
             <button className="btn btnPur" onClick={ ()=> {
-              let addpro = pic[id]
+              let addpro = props.shoes[id]
               dispatch(addItem(addpro))
               navi('/cart')
             }}>구매하기</button> 
             <button className="btn btnCart" onClick={ ()=> {
-              let addpro = pic[id]
+              let addpro = props.shoes[id]
               dispatch(modalOpen(true)); 
               setPro(addpro)
               document.body.style.overflow = "hidden";
@@ -93,17 +93,18 @@ const Detail = ({pic, openfirstmo, opensecomo}) => {
             }}>문의</button>
           </div>
           {/* 하단 탭 컨텐츠 */}
-          <Tabcont tab={tab} pic={pic[id]}></Tabcont>
+          <Tabcont tab={tab} shoes={props.shoes[id]}></Tabcont>
         </div>
       </div>
     </div> 
   )
 }
 
+export default Detail
 
 
 // 하단 탬 컨텐츠
-const Tabcont = ({tab, pic}) => {
+function Tabcont(props) {
 
   let [fade1,setFade1] = useState('')
   let [color, setColor] = useState('')
@@ -118,7 +119,7 @@ const Tabcont = ({tab, pic}) => {
 
   // 오른쪽 썸네일과 현재 클릭된 이미지 확인
   let thumbimg = currImg.find((x)=> {
-    return x.id == pic.id
+    return x.id == props.shoes.id
   })
 
   // 배경색 클릭된 index
@@ -140,7 +141,7 @@ const Tabcont = ({tab, pic}) => {
     return()=> {
       setFade1('')
     }
-  },[tab])
+  },[props.tab])
 
 
   return(
@@ -241,7 +242,7 @@ const Tabcont = ({tab, pic}) => {
               <li className={ liclick == 6? 'on' : null}>작품 선택일로부터 영업일 기준 5일 전후 수령 가능합니다.</li>
             </ul>
           </div>
-      ][tab]
+      ][props.tab]
     }
   </div>
   )
@@ -250,7 +251,7 @@ const Tabcont = ({tab, pic}) => {
 
 
 // 장바구니 담기 모달창 component
-const Shopmodal = ({pro}) => {
+function Shopmodal(props) {
 
   let dispatch= useDispatch()
 
@@ -258,7 +259,7 @@ const Shopmodal = ({pro}) => {
       <div className='cartModalll'>
         <div className='cartModalll_fir'>
           <div className='cartModalll_seco'>
-            <h5>"{pro.name}" 을 장바구니에 담으시겠습니까?</h5>
+            <h5>"{props.pro.name}" 을 장바구니에 담으시겠습니까?</h5>
             <ul>
               <li onClick={()=> {
                 dispatch(modalOpen(false));
@@ -266,7 +267,7 @@ const Shopmodal = ({pro}) => {
               }}>취소</li>
               <li onClick={ ()=> {
                 dispatch(modalOpen(false));
-                dispatch(addItem(pro))
+                dispatch(addItem(props.pro))
                 dispatch(secoModal(true))
                 document.body.style.overflow = "hidden";
               }}>확인</li>
@@ -280,7 +281,7 @@ const Shopmodal = ({pro}) => {
 
 
 // 장바구니 이동 모달창 component
-const Secomodal = () => {
+function Secomodal() {
 
   let dispatch= useDispatch()
   let navi = useNavigate()
@@ -306,7 +307,3 @@ const Secomodal = () => {
     </div>
   )
 }
-
-
-
-export {Detail,Tabcont,Shopmodal,Secomodal}
