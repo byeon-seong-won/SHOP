@@ -1,3 +1,27 @@
+<h1>Shopping Mall</h1>
+: React를 활용한 사진 쇼핑몰 SPA (PWA 셋팅)
+React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하기
+
+[개인 프로젝트: 2023.06.27~]
+
+
+
+
+💻 [2023.08.07~ ] 코드 수정 💻 
+<li>
+  Cart page 수량증감 버튼 동작 안 되는 부분 해결
+</li>
+<li>
+  기존 props로 되어있는 부분 일부 redux로 수정
+</li>
+
+
+<br>
+<br>
+<br>
+<br>
+
+
 💻 [2023.06.27] nodex.js 와 mysql 연동 💻 
 
 <p> 1. node.js </p>
@@ -13,22 +37,6 @@
 <br>
 <p> 5. map 함수를 이용해 shoes안에 있는 데이터들을 뿌려준다. </p>
 <img width="269" alt="image" src="https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/46ed1875-f10d-42e0-baf1-31d9361824f7">
-
-
-<br>
-<br>
-<br>
-<br>
-
-💻 [2023.08.07~ ] 코드 수정 💻 
-<li>
-  Cart page 수량증감 버튼 동작 안 되는 부분 해결
-</li>
-<li>
-  기존 props로 되어있는 부분 일부 redux로 수정
-</li>
-
-<br><br><br>
 
 
 
