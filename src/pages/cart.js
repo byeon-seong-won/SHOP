@@ -9,14 +9,12 @@ function Cart(props) {
   let modal = useSelector((state) => {return state.modal})
   let desmodal = useSelector((state) => {return state.desmodal})
   let cart = useSelector((state) => {return state.cart})
+
   let dispatch = useDispatch()
   let navi = useNavigate()
   let [num,setNum] = useState('')
   let [chkbox, setChkbox] = useState('')
   
-  let prtotal = 0;
-  let fitotal = 2000 + prtotal;
-
 
   // <-- 전체선택 클릭시
   let statuschkbox = () => {
@@ -29,6 +27,8 @@ function Cart(props) {
   // 전체선택 클릭시 -->
 
 
+  let [clicked, setClicked] = useState('')
+
 
   return(
     <div className='Wrap'>
@@ -37,9 +37,9 @@ function Cart(props) {
 
       <h4>장바구니</h4>
       <ul className='allSelect'>
-        <li onClick={()=> {statuschkbox()}}>전체선택</li>
+        <li onClick={()=> {statuschkbox(); setClicked(cart.id)}}>전체선택</li>
         <li>|</li>
-        <li>선택삭제</li>
+        <li onClick={()=> {dispatch(cartActions.remove(clicked))}}>선택삭제</li>
       </ul>
       <div className='cartWrap'>
         {/* 왼쪽 장바구니 박스 */}
@@ -49,7 +49,7 @@ function Cart(props) {
               return(
                 <div key={i} className='leftBox'>
                   <div>
-                    <label for={'name0' + cart[i].id}>
+                    <label for={'name0' + cart[i].id} onClick={()=>{setClicked(cart[i].id)}}>
                       <input type="checkbox" id={'name0' + cart[i].id}/>
                       <span className={'ckbox ' + chkbox}></span>
                     </label>
@@ -61,19 +61,20 @@ function Cart(props) {
                     
                   <div className='countBtn'>
                     <span className='xiarr xi-angle-up-thin' onClick={()=> {
-                      dispatch(cartActions.incCount(cart[i].id))
+                      dispatch(cartActions.incCount(cart[i].id,cart[i].price))
                     }}></span>
                     <span>{cart[i].count}</span> 
                     <span className='xiarr xi-angle-down-thin' onClick={()=> {
-                      dispatch(cartActions.decCount(cart[i].id))
+                      dispatch(cartActions.decCount(cart[i].id,cart[i].price))
                     }}></span>
                     { cart[i].count < 1? <Countmodal num={i} cart={cart}></Countmodal> : null}
                   </div>
                   
                   <div className='priceBtn'>
-                    <span>{cart[i].price}원</span>
+                    <span>{cart[i].price*cart[i].count}원</span>
                     <span className='xiclose xi-close-thin' onClick={()=> {
-                      dispatch(modalActions.modalOpen(true)); setNum(i)
+                      dispatch(modalActions.modalOpen(true)); setNum(i);
+
                       document.body.style.overflow = "hidden";
                     }}></span>
                   </div>
@@ -89,7 +90,7 @@ function Cart(props) {
             <h6>주문금액</h6>
             <ul>
               <li>총 상품금액</li>
-              <li> {prtotal} 원</li>
+              <li>  원</li>
             </ul>
             <ul>
               <li>배송비</li>
@@ -97,7 +98,7 @@ function Cart(props) {
             </ul>
             <ul>
               <li>총 결제금액</li>
-              <li> {fitotal} 원</li>
+              <li>  원</li>
             </ul>
           </div>
         </div>
