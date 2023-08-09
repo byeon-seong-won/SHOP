@@ -1,7 +1,7 @@
 import {configureStore, createSlice} from '@reduxjs/toolkit'
 import modalSlice from './firmodalSlice'
 import secomodalSlice from './secomodalSlice'
-import cartSlice from './cartSlice'
+import { cartSlice, moneySlice } from './cartSlice'
 import desmodalSlice from './descmodalSlice'
 
   const store =  configureStore ({
@@ -10,6 +10,7 @@ import desmodalSlice from './descmodalSlice'
         modal : modalSlice.reducer,
         desmodal : desmodalSlice.reducer,
         secomodal : secomodalSlice.reducer,
+        prototal : moneySlice.reducer,
     }
   })
 
@@ -17,7 +18,7 @@ import desmodalSlice from './descmodalSlice'
   export const secomodalActions = secomodalSlice.actions
   export const desmodalActions = desmodalSlice.actions
   export const cartActions = cartSlice.actions
-
+  export const moneyActions = moneySlice.actions
   export default store;
 
  
