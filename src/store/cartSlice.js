@@ -3,18 +3,25 @@ import {createSlice} from '@reduxjs/toolkit'
 
 
 // 총금액 계산
-// const totalmoneyinitialState = {
-//   money : 0,
-// }
-// let moneySlice = createSlice({
-//   name : 'money',
-//   initialState : totalmoneyinitialState,
-//   reducers : {
-//     prototal(state, price, count) {
-//       return state = price.payload * count.payload;
-//     }
-//   }
-// })
+const totalmoneyinitialState = {
+  list: [],
+  total: '',
+}
+let moneySlice = createSlice({
+  name : 'money',
+  initialState : totalmoneyinitialState,
+  reducers : {
+    prototal(state, action) {
+      const arr = [...action.payload];
+      state.list.push({
+        price: arr.price,
+        count : arr.count,
+        // total : price * count
+      })
+      state.total = state.total + state.list.total;
+    }
+  }
+})
 
 
 
@@ -68,4 +75,4 @@ let cartSlice = createSlice({
 
 
 
-  export default cartSlice 
+  export {cartSlice, moneySlice} 
