@@ -1,10 +1,11 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import bg from './main_final_02.png'
 import bg02 from './main_.jpg'
 import Detail from './pages/Detail.js'
 import Cart from './pages/cart.js'
 import { Routes, Route, useNavigate} from 'react-router-dom'
+import axios from 'axios';
 
 import data from './data.js'
 
@@ -17,39 +18,41 @@ import { Tabcont } from './component/tabContent';
 
 function App(){
 
-  let [shoes, setShoes] = useState(data)
+  // let [shoes, setShoes] = useState(data)
   {/* mysql - node.js 연동 */}
-  // const [shoes, setShoes] = useState([
-  //   {
-  //     id : '',
-  //     name : '',
-  //     count : '',
-  //     price : ''
-  //   }
-  // ]);
+  const [shoes, setShoes] = useState([
+    {
+      id : '',
+      name : '',
+      count : '',
+      price : ''
+    }
+  ]);
 
-  // useEffect(()=> {
-  //   axios.get("http://localhost:3001/api/product")
-  //     .then((result)=>{
-  //       setShoes(result.data);
-  //     })
-  //     .catch((Error) => {
-  //       console.log('error')
-  //     })
-  // },[]);
+  useEffect(()=> {
+    axios.get("http://localhost:3001/api/product")
+      .then((result)=>{
+        setShoes(result.data);
+        // console.log("result" + JSON.stringify(result))
+      })
+      .catch((Error) => {
+        console.log('error')
+      })
+  },[]);
   {/* mysql - node.js 연동 */}
 
 
 
-
+  let [load, setLoad] = useState(false);
   let [tab,setTab] = useState(0)
   let [currenttab, clickTab] = useState(0)
   let [tabbtn] = useState(['sunset', 'travel', 'light', 'daily', 'winter'])
   let buttonHandle = (index) => {
     clickTab(index)
   }
-  let [more, setMore] = useState('')
-  console.log(more)
+  let [pagenum, setPagenum] = useState(0)
+  let slice = pagenum + 9;
+
 
 
 
@@ -64,30 +67,93 @@ function App(){
               {/* 상단 메인 이미지 */}
               <div className='main-bg' style={ {backgroundImage: 'url(' + bg + ')'}}></div>
 
-              {/* ]중간 컨텐츠*/}
+              {/* 중간 컨텐츠*/}
               <div className='wrap'>
                 <h4 className='mainTitle'>DAILY PHOTO</h4>
-
                 <div className="mainPicture">
-                  <div>
+                  <div className='display'>
                     {
-                      shoes.slice(0,6).map(function(a,i) {
+                      shoes.slice(0,slice).map(function(a,pagenum) {
                         return(
                           <div>
-                            <Card shoes={shoes[i]} i={i}></Card>
+                            <Card shoes={shoes[pagenum]} i={pagenum}></Card>
                           </div>
                         )
                       })
                     }
-                    <button onClick={()=>{setMore(1)}}>더보기</button>
                   </div>
+                  <button className={"mpbtn " + (pagenum == 27 ? "display" : null)} onClick={()=>{setPagenum(pagenum +9)}}>More View</button>
 
-                  <div className={more == 1 ? "display" : null}>
+                  {/* <div className={more ==1 ? "display" : "none"}>
                     {
-                      shoes.slice(6,12).map(function(a,i) {
+                      shoes.slice(9,18).map(function(a,i) {
                         return(
                           <div>
-                            <Card shoes={shoes[i]} i={i+6}></Card>
+                            <Card shoes={shoes[i+10]} i={i+10}></Card>
+                          </div>
+                        )
+                      })
+                    }
+                    <button className={"mpbtn " + (more == 2? "display" : null)} onClick={()=>{
+                      setLoad(true)
+
+                      axios.get("http://localhost:3001/api/product")
+                      .then(결과=>{
+                        console.log("결과" + JSON.stringify(결과))
+                        let copy = [...결과.data]
+                        console.log(copy[18])
+                        setMore(2)
+                      })
+                    }}>More view</button>
+                  </div>
+
+
+                  <div className={more == 2 ? "display" : "none"}>
+                    {
+                      shoes.slice(18,27).map(function(a,i) {
+                        return(
+                          <div>
+                            <Card shoes={shoes[i+19]} i={i+19}></Card>
+                          </div>
+                        )
+                      })
+                    }
+                    <button className={"mpbtn " + (more == 3? "display" : null)} onClick={()=>{
+                      setLoad(true)
+
+                      axios.get("http://localhost:3001/api/product")
+                      .then(결과=>{
+                        console.log("결과" + JSON.stringify(결과))
+                        let copy = [...결과.data]
+                        console.log(copy[27])
+                        setMore(3)
+                      })
+                    }}>More view</button>
+                  </div>
+
+
+                  <div className={more == 3 ? "display" : "none"}>
+                    {
+                      shoes.slice(27,29).map(function(a,i) {
+                        return(
+                          <div>
+                            <Card shoes={shoes[i+28]} i={i+28}></Card>
+                          </div>
+                        )
+                      })
+                    }
+                  </div> */}
+
+
+
+
+{/* 
+                   <div className={more == 1 ? "display" : null}>
+                    {
+                      shoes.slice(10,19).map(function(a,i) {
+                        return(
+                          <div>
+                            <Card shoes={shoes[i+9]} i={i+9}></Card>
                           </div>
                         )
                       })
@@ -131,18 +197,18 @@ function App(){
                         )
                       })
                     }
-                  </div>
+                  </div>  */}
 
                     {/* <button onClick={()=>{
                       setLoad(true)
 
-                      axios.get('https://codingapple1.github.io/shop/data2.json')
+                      axios.get("http://localhost:3001/api/product")
                       .then((결과)=>{
 
                         let copy = [...shoes, ...결과.data]
                         setShoes(copy)
-                        console.log(copy)
-                        console.log(shoes)
+                        console.log("copy" + copy)
+                        console.log("shoes" + shoes)
                       })
 
                     }}>More view</button> */}
