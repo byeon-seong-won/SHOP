@@ -225,11 +225,6 @@ let navi = useNavigate()
 }
 
 
-
-
-
-
-
 // 중간 컨텐츠 - 호버시 모달창 component
 function Hovermodal({num,shoes}) {
   return(

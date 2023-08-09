@@ -17,17 +17,16 @@ let cartSlice = createSlice({
       
       let plusMoney = state[idx].count * state[idx].price
       console.log(plusMoney)
-      state[idx].count = plusMoney;
+      state[idx].price = plusMoney;
     },
 
     decCount(state, action){
       let idx = state.findIndex((a)=>{ return a.id === action.payload })
       state[idx].count--
-      if(state[idx].count < 1) {
-        // dispatch(modalOpen(true))
-        alert('안됨')
-        state[idx].count = 1;
-      }
+    //   if(state[idx].count < 1) {
+    //     alert('안됨')
+    //     state[idx].count = 1;
+    //   }
     },
 
     // 장바구니 상품 삭제

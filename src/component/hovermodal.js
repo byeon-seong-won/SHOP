@@ -41,4 +41,4 @@
 //     }
     
 
-//     export {Card, Hovermodal}
+//     export {Card}

@@ -1,18 +1,21 @@
 
 import { useSelector, useDispatch} from 'react-redux'
-import {modalActions, cartActions} from '../store.js'
+import { modalActions, desmodalActions, cartActions} from '../store/store.js'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
 function Cart(props) {
   let modal = useSelector((state) => {return state.modal})
+  let desmodal = useSelector((state) => {return state.desmodal})
   let cart = useSelector((state) => {return state.cart})
   let dispatch = useDispatch()
   let navi = useNavigate()
   let [num,setNum] = useState('')
   let [chkbox, setChkbox] = useState('')
-
+  
+  let prtotal = 0;
+  let fitotal = 2000 + prtotal;
 
 
   // <-- 전체선택 클릭시
@@ -64,6 +67,7 @@ function Cart(props) {
                     <span className='xiarr xi-angle-down-thin' onClick={()=> {
                       dispatch(cartActions.decCount(cart[i].id))
                     }}></span>
+                    { cart[i].count < 1? <Countmodal num={i} cart={cart}></Countmodal> : null}
                   </div>
                   
                   <div className='priceBtn'>
@@ -85,7 +89,7 @@ function Cart(props) {
             <h6>주문금액</h6>
             <ul>
               <li>총 상품금액</li>
-              <li>원</li>
+              <li> {prtotal} 원</li>
             </ul>
             <ul>
               <li>배송비</li>
@@ -93,7 +97,7 @@ function Cart(props) {
             </ul>
             <ul>
               <li>총 결제금액</li>
-              <li>원</li>
+              <li> {fitotal} 원</li>
             </ul>
           </div>
         </div>
@@ -110,6 +114,8 @@ function Countmodal(props) {
 
   let dispatch= useDispatch()
 
+
+
   return(
       <div className='cartModalll'>
         <div className='cartModalll_fir'>
@@ -118,6 +124,7 @@ function Countmodal(props) {
             <ul>
               <li onClick={()=> {
                 dispatch(modalActions.modalOpen(false));
+                dispatch(desmodalActions.desmodalOpen(false));
                 document.body.style.overflow = "unset";
               }}>취소</li>
               <li onClick={ ()=> {
@@ -130,6 +137,6 @@ function Countmodal(props) {
         </div>
       </div>
   )
-
-
 }
+
+

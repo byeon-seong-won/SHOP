@@ -1,16 +1,24 @@
-import { configureStore } from "@reduxjs/toolkit"
-import cart from "./cartSlice"
-import secomodal from "./secomodalSlice"
-import modal from "./firmodalSlice"
+import {configureStore, createSlice} from '@reduxjs/toolkit'
+import modalSlice from './firmodalSlice'
+import secomodalSlice from './secomodalSlice'
+import cartSlice from './cartSlice'
+import desmodalSlice from './descmodalSlice'
 
 
-
-
-
-export default configureStore ({
+  const store =  configureStore ({
     reducer : {
-      cart : cart.reducer,
-      secomodal : secomodal.reducer,
-      modal : modal.reducer
+        cart : cartSlice.reducer,
+        modal : modalSlice.reducer,
+        desmodal : desmodalSlice.reducer,
+        secomodal : secomodalSlice.reducer
     }
   })
+
+  export const modalActions = modalSlice.actions
+  export const secomodalActions = secomodalSlice.actions
+  export const desmodalActions = desmodalSlice.actions
+  export const cartActions = cartSlice.actions
+
+  export default store;
+
+ 

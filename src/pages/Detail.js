@@ -1,7 +1,7 @@
 import { useParams, useNavigate} from "react-router-dom"
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch} from 'react-redux'
-import {modalActions, secomodalActions,cartActions} from '../store.js'
+import {modalActions, secomodalActions,cartActions} from '../store/store.js'
 import Gallery from '../img.js'
 
 
