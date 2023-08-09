@@ -34,9 +34,6 @@ let cartSlice = createSlice({
         const arr = [...state]
         let idx = state.findIndex((a)=>{ return a.id === action.payload })
         state[idx].count++;
-        // let totalmo = state.
-        // const result = arr.concat({totalmo : state[idx].price * state[idx].count})
-
     },
 
     decCount(state, action){
