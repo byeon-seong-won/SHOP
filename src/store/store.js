@@ -4,13 +4,12 @@ import secomodalSlice from './secomodalSlice'
 import cartSlice from './cartSlice'
 import desmodalSlice from './descmodalSlice'
 
-
   const store =  configureStore ({
     reducer : {
         cart : cartSlice.reducer,
         modal : modalSlice.reducer,
         desmodal : desmodalSlice.reducer,
-        secomodal : secomodalSlice.reducer
+        secomodal : secomodalSlice.reducer,
     }
   })
 

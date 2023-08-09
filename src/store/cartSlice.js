@@ -2,6 +2,25 @@ import {createSlice} from '@reduxjs/toolkit'
 
 
 
+// 총금액 계산
+// const totalmoneyinitialState = {
+//   money : 0,
+// }
+// let moneySlice = createSlice({
+//   name : 'money',
+//   initialState : totalmoneyinitialState,
+//   reducers : {
+//     prototal(state, price, count) {
+//       return state = price.payload * count.payload;
+//     }
+//   }
+// })
+
+
+
+
+
+
 const cartinitialState = 
     [
         {id : 0, name : 'THERE THERE Music Pub', count :1, price :1000},
@@ -12,12 +31,12 @@ let cartSlice = createSlice({
   initialState : cartinitialState,
   reducers : {
     incCount(state, action){
-      let idx = state.findIndex((a)=>{ return a.id === action.payload })
-      state[idx].count++
-      
-      let plusMoney = state[idx].count * state[idx].price
-      console.log(plusMoney)
-      state[idx].price = plusMoney;
+        const arr = [...state]
+        let idx = state.findIndex((a)=>{ return a.id === action.payload })
+        state[idx].count++;
+        // let totalmo = state.
+        // const result = arr.concat({totalmo : state[idx].price * state[idx].count})
+
     },
 
     decCount(state, action){
@@ -44,8 +63,12 @@ let cartSlice = createSlice({
         state[exi].count++
       }
     }
-    
-  }})
+  }
+})
+
+
+
+
 
 
   export default cartSlice 
