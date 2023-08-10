@@ -10,7 +10,7 @@ import desmodalSlice from './descmodalSlice'
         modal : modalSlice.reducer,
         desmodal : desmodalSlice.reducer,
         secomodal : secomodalSlice.reducer,
-        prototal : moneySlice.reducer,
+
     }
   })
 
@@ -18,7 +18,7 @@ import desmodalSlice from './descmodalSlice'
   export const secomodalActions = secomodalSlice.actions
   export const desmodalActions = desmodalSlice.actions
   export const cartActions = cartSlice.actions
-  export const moneyActions = moneySlice.actions
+
   export default store;
 
  

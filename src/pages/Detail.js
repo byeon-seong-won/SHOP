@@ -6,7 +6,7 @@ import Gallery from '../img.js'
 
 
 
-function Detail(props) {
+const Detail = ({shoes}) => {
 
   let {id} = useParams(null); 
   let [tab, setTab] = useState(0)
@@ -30,29 +30,30 @@ function Detail(props) {
       <div className="detailWrap">
         {/* 상단 이미지와 설명 */}
         <div className="detailCon">
-          <img className="product" src={'/pic_' + (props.shoes[id].id+1) + '.png'} width="100%" />
+          <img className="product" src={'/pic_' + (shoes[id].id+1) + '.png'} width="100%" />
           <div>
-            <h4>{props.shoes[id].name}</h4>
+            <h4>{shoes[id].name}</h4>
             <table>
+              <tbody>
               <tr>
                 <td>작가</td>
                 <td>변성원 </td>
               </tr>
               <tr>
                 <td>작품정보</td>
-                <td>{props.shoes[id].name} <br/>(800 x 860), 2022</td>
+                <td>{shoes[id].name} <br/>(800 x 860), 2022</td>
               </tr>
               <tr>
                 <td>작품코드</td>
-                <td>2022-A7131{props.shoes[id].id}</td>
+                <td>2022-A7131{shoes[id].id}</td>
               </tr>
               <tr>
                 <td>구매가</td>
-                <td>{props.shoes[id].price} 원</td>
+                <td>{shoes[id].price} 원</td>
               </tr>
               <tr>
                 <td>렌탈가</td>
-                <td>월 {props.shoes[id].price} 원</td>
+                <td>월 {shoes[id].price} 원</td>
               </tr>
               <tr>
                 <td>렌탈기간</td>
@@ -60,17 +61,18 @@ function Detail(props) {
               </tr>
               <tr>
                 <td>최종 구매가</td>
-                <td>{props.shoes[id].price} 원</td>
+                <td>{shoes[id].price} 원</td>
               </tr>
+              </tbody>
             </table>
 
             <button className="btn btnPur" onClick={ ()=> {
-              let addpro = props.shoes[id]
+              let addpro = shoes[id]
               dispatch(cartActions.addItem(addpro))
               navi('/cart')
             }}>구매하기</button> 
             <button className="btn btnCart" onClick={ ()=> {
-              let addpro = props.shoes[id]
+              let addpro = shoes[id]
               dispatch(modalActions.modalOpen(true)); 
               setPro(addpro)
               document.body.style.overflow = "hidden";
@@ -93,7 +95,7 @@ function Detail(props) {
             }}>문의</button>
           </div>
           {/* 하단 탭 컨텐츠 */}
-          <Tabcont tab={tab} shoes={props.shoes[id]}></Tabcont>
+          <Tabcont tab={tab} shoes={shoes[id]}></Tabcont>
         </div>
       </div>
     </div> 
@@ -104,7 +106,7 @@ export default Detail
 
 
 // 하단 탬 컨텐츠
-function Tabcont(props) {
+const Tabcont = ({tab, shoes}) => {
 
   let [fade1,setFade1] = useState('')
   let [color, setColor] = useState('')
@@ -119,7 +121,7 @@ function Tabcont(props) {
 
   // 오른쪽 썸네일과 현재 클릭된 이미지 확인
   let thumbimg = currImg.find((x)=> {
-    return x.id == props.shoes.id
+    return x.id == shoes.id
   })
 
   // 배경색 클릭된 index
@@ -141,7 +143,7 @@ function Tabcont(props) {
     return()=> {
       setFade1('')
     }
-  },[props.tab])
+  },[tab])
 
 
   return(
@@ -242,7 +244,7 @@ function Tabcont(props) {
               <li className={ liclick == 6? 'on' : null}>작품 선택일로부터 영업일 기준 5일 전후 수령 가능합니다.</li>
             </ul>
           </div>
-      ][props.tab]
+      ][tab]
     }
   </div>
   )
@@ -251,7 +253,7 @@ function Tabcont(props) {
 
 
 // 장바구니 담기 모달창 component
-function Shopmodal(props) {
+const Shopmodal = ({pro}) => {
 
   let dispatch= useDispatch()
 
@@ -259,7 +261,7 @@ function Shopmodal(props) {
       <div className='cartModalll'>
         <div className='cartModalll_fir'>
           <div className='cartModalll_seco'>
-            <h5>"{props.pro.name}" 을 장바구니에 담으시겠습니까?</h5>
+            <h5>"{pro.name}" 을 장바구니에 담으시겠습니까?</h5>
             <ul>
               <li onClick={()=> {
                 dispatch(modalActions.modalOpen(false));
@@ -267,7 +269,7 @@ function Shopmodal(props) {
               }}>취소</li>
               <li onClick={ ()=> {
                 dispatch(modalActions.modalOpen(false));
-                dispatch(cartActions.addItem(props.pro))
+                dispatch(cartActions.addItem(pro))
                 dispatch(secomodalActions.secoModal(true))
                 document.body.style.overflow = "hidden";
               }}>확인</li>
@@ -281,7 +283,7 @@ function Shopmodal(props) {
 
 
 // 장바구니 이동 모달창 component
-function Secomodal() {
+const Secomodal = () => {
 
   let dispatch= useDispatch()
   let navi = useNavigate()

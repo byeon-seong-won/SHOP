@@ -1,6 +1,6 @@
 
 import { useSelector, useDispatch} from 'react-redux'
-import { modalActions, desmodalActions, cartActions, moneyActions} from '../store/store.js'
+import { modalActions, desmodalActions, cartActions} from '../store/store.js'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,15 +9,15 @@ function Cart() {
   let modal = useSelector((state) => {return state.modal})
   let desmodal = useSelector((state) => {return state.desmodal})
   let cart = useSelector((state) => {return state.cart})
-  let prototal = useSelector((state) => {return state.prototal})
+  // let fintotal = useSelector((state) => {return state.cart.total})
+  let delitotal = 2000 + prototal;
+
 
   let dispatch = useDispatch()
   let navi = useNavigate()
   let [num,setNum] = useState('')
   let [chkbox, setChkbox] = useState('')
   
-  // let prototal = cart.price;
-  let fintotal = 2000 + prototal;
 
   // <-- 전체선택 클릭시
   let statuschkbox = () => {
@@ -64,11 +64,13 @@ function Cart() {
                     
                   <div className='countBtn'>
                     <span className='xiarr xi-angle-up-thin' onClick={()=> {
-                      dispatch(cartActions.incCount(cart[i].id,cart[i].price))
+                      dispatch(cartActions.incCount(cart[i].id));
+
+                      dispatch(cartActions.prototal(cart[i]));
                     }}></span>
                     <span>{cart[i].count}</span> 
                     <span className='xiarr xi-angle-down-thin' onClick={()=> {
-                      dispatch(cartActions.decCount(cart[i].id,cart[i].price))
+                      dispatch(cartActions.decCount(cart[i].id));
                     }}></span>
                     { cart[i].count < 1? <Countmodal num={i} cart={cart}></Countmodal> : null}
                   </div>
@@ -77,7 +79,6 @@ function Cart() {
                     <span>{cart[i].price*cart[i].count}원</span>
                     <span className='xiclose xi-close-thin' onClick={()=> {
                       dispatch(modalActions.modalOpen(true)); setNum(i);
-                      dispatch(moneyActions.prototal(cart[i]));
                       document.body.style.overflow = "hidden";
                     }}></span>
                   </div>
@@ -101,7 +102,7 @@ function Cart() {
             </ul>
             <ul>
               <li>총 결제금액</li>
-              <li> {fintotal}원</li>
+              <li>원</li>
             </ul>
           </div>
         </div>
