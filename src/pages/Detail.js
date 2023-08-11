@@ -22,12 +22,12 @@ const Detail = ({shoes}) => {
 
 
   return(
-    <div className="container">
+    <>
       {/* 모달창 팝업 */}
       { modal == true ? <Shopmodal pro={pro}></Shopmodal> : null }
       { secomodal == true ? <Secomodal></Secomodal> : null }
 
-      <div className="detailWrap">
+      <div className="detailContent">
         {/* 상단 이미지와 설명 */}
         <div className="detailCon">
           <img className="product" src={'/pic_' + (shoes[id].id+1) + '.png'} width="100%" />
@@ -98,11 +98,11 @@ const Detail = ({shoes}) => {
           <Tabcont tab={tab} shoes={shoes[id]}></Tabcont>
         </div>
       </div>
-    </div> 
+    </> 
   )
 }
 
-export default Detail
+
 
 
 // 하단 탬 컨텐츠
@@ -147,12 +147,12 @@ const Tabcont = ({tab, shoes}) => {
 
 
   return(
-  <div className={'start ' + fade1}>
+  <div className={'tabcontent ' + fade1}>
     {
       [
           // 탭컨텐츠1 - 작품감상하기
-          <div className="picBack">
-            <h4>작품 걸어보기</h4>
+          <div className="cont">
+            <h2 className="contTitle">작품 걸어보기</h2>
             <div className="picBack_inner">
               <div className="picBackImg" style={{backgroundColor : color, backgroundImage : 'URL(' + bg + ')'}}>
                 <img src={'/pic_' + (thumbimg.id) + 'back_0.png'} className={display}/>
@@ -160,21 +160,21 @@ const Tabcont = ({tab, shoes}) => {
               <div className="rightText">
                 <div className="bgImg">
                   <h5>공간</h5>
-                    <div>
-                      {/* 우측 공간 썸네일 이미지 */}
-                      {
-                        [1,2,3].map(function(a,i) {
-                          let src = '/pic_' + (thumbimg.id) + 'back_' + i + '.png'
-                          return(
-                            <img src={src} className={ imgclick == i ? 'on' : 'none'} onClick={()=> {
-                            setBg(src)
-                            setDisplay('display')
-                            imgclickindex(i)
-                          }}/>
-                          )
-                        })
-                      }
-                    </div>
+                  <div>
+                    {/* 우측 공간 썸네일 이미지 */}
+                    {
+                      [1,2,3].map(function(a,i) {
+                        let src = '/pic_' + (thumbimg.id) + 'back_' + i + '.png'
+                        return(
+                          <img src={src} className={ imgclick == i ? 'on' : 'none'} onClick={()=> {
+                          setBg(src)
+                          setDisplay('display')
+                          imgclickindex(i)
+                        }}/>
+                        )
+                      })
+                    }
+                  </div>
                 </div>
                 <div className="bgColor">
                   <h5>배경색</h5>
@@ -196,7 +196,7 @@ const Tabcont = ({tab, shoes}) => {
               </div>
             </div>
 
-            <h4>작품 소개</h4>
+            <h3>작품 소개</h3>
             <p>
             작가는 다양한 모습과 장식을 사물을 관찰합니다. 
             작가는 이처럼 인간과 밀접한 관계를 지닌 사물을 인간에 대한 탐구와 애정어린 심리를 담아 묘사하고 있습니다. 
@@ -205,7 +205,7 @@ const Tabcont = ({tab, shoes}) => {
             각자의 개성이 모두 존중받아 마땅한 아름다움이라고 작가와 작품은 말해주고 있는 것처럼 느껴집니다.
             </p>
 
-            <h4>큐레이터 노트</h4>
+            <h3>큐레이터 노트</h3>
             <p>
             장소를 가리지 않고 사람이 있다면 어느 곳에서나 필요로 하며 배치되어 있는 사물은
             따라서 인간과 형태적으로 매우 유사하다. 작가는 이와 같은 의자의 특성을 사람과 유사하다 파악하며, 
@@ -217,8 +217,8 @@ const Tabcont = ({tab, shoes}) => {
           </div>,
           
           // 탭컨텐츠2 - 문의
-          <div className="picBack faqWrap">
-            <h4>자주 묻는 질문</h4>
+          <div className="cont faqWrap">
+            <h2 className="contTitle">자주 묻는 질문</h2>
             <ul onClick={()=> {setLiclick(1)}}>
               <li>Q. 렌탈료는 매달 결제하나요?</li>
               <li className={ liclick == 1? 'on' : null}>첫 3개월 렌탈료는 이벤트가로 일시불 결제되며, 이후 일반 렌탈 시 매달 작품 크기에 따른 렌탈료가 결제됩니다.</li>
@@ -309,3 +309,9 @@ const Secomodal = () => {
     </div>
   )
 }
+
+
+
+
+
+export default Detail
