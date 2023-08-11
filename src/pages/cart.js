@@ -9,11 +9,12 @@ function Cart() {
   let modal = useSelector((state) => {return state.modal})
   let desmodal = useSelector((state) => {return state.desmodal})
   let cart = useSelector((state) => {return state.cart})
-
   let dispatch = useDispatch()
   let navi = useNavigate()
   let [num,setNum] = useState('')
   let [chkbox, setChkbox] = useState('')
+
+
 
   // 총 가격 계산
   const priceSum = () => {
@@ -39,7 +40,7 @@ function Cart() {
 
 
   return(
-    <div className='Wrap'>
+    <div className='cartContent'>
       {/* 상품삭제 모달창 */}
       { modal == true ? <Countmodal num={num} cart={cart}></Countmodal> : null }
 
@@ -49,14 +50,14 @@ function Cart() {
         <li>|</li>
         <li onClick={()=> {dispatch(cartActions.remove(cart.id))}}>선택삭제</li>
       </ul>
-      <div className='cartWrap'>
+      <div className='cartcontWrap'>
         {/* 왼쪽 장바구니 박스 */}
-        <div className='cartwrapInner'>
+        <div className='leftboxWrap'>
           {
             cart.map(function(a,i){
               return(
                 <div key={i} className='leftBox'>
-                  <div>
+                  <div className='proInfo'>
                     <input type="checkbox" id={'name0' + cart[i].id}  onClick={()=> {check == true? setChkbox('check'):setChkbox('')}}/>
                     <span className={'ckbox ' + chkbox}></span>
                     <img src={'/pic_' +(cart[i].id+1) + '.png'} className='cartImg'/>
