@@ -63,11 +63,11 @@ let cartSlice = createSlice({
         state[exi].count++
       }
     }, 
-    prototal(state,action) {
-      const arr = [...state]
-      let idx = state.findIndex((a)=>{ return a.id === action.payload.id })
-      state[idx].price = state[idx].count *  action.payload.price;
-    }
+    // prototal(state,action) {
+    //   const arr = [...state]
+    //   let idx = state.findIndex((a)=>{ return a.id === action.payload.id })
+    //   state[idx].price = state[idx].count *  action.payload.price;
+    // }
 
  
 
