@@ -2,13 +2,14 @@
 @import url(header.css);
 @import url(detail.css);
 @import url(cart.css);
+@import url(modal.css);
 @import url(footer.css);
 
 
 /*---------- mainpage style ----------*/
 
 
-/* 상단 컨텐츠 */
+/* 상단 메인 컨텐츠 */
 .mainImg {
   width: 100%;
   height:0;
@@ -45,8 +46,9 @@
 
 
 
+
 /* 이미지 호버시 모달창 */
-.pictureHv {
+.mainText>div.mainPicture>div>div.picture .pictureMo>div.pictureHv {
   position: absolute;
   top: 0;
   left: 0;
@@ -54,7 +56,7 @@
   height: 100%;
   cursor: pointer;
 }
-.pictureHv:after {
+.mainText>div.mainPicture>div>div.picture .pictureMo>div.pictureHv:after {
   content: '';
   position: absolute;
   width: 100%;
@@ -64,8 +66,7 @@
   border-radius: 20px;
   background-color: rgba(255, 255, 255,0.6);
 }
-
-.pictureHv>h1 {
+.mainText>div.mainPicture>div>div.picture .pictureMo>div.pictureHv>h1 {
   position: absolute;
   z-index: 100;
   top: 48%;
@@ -80,7 +81,7 @@
 
 
 
-/* 하단 컨텐츠 */
+/* 하단 컨텐츠 - Photo type */
 .mainText>div.tabBtn {
   width: 60%;
   margin: 0 auto;
@@ -92,15 +93,16 @@
 .mainText>div.tabBtn>button {
   border: none;
   background-color: transparent;
-  transition: 0.5s;
   font-size: 22px;
   cursor: pointer;
   font-family: 'Caprasimo', cursive;
-  flex: 1;
+  width: 100px;
 }
 .mainText>div.tabBtn>button.none {border: none;color: #999;}
 .mainText>div.tabBtn>button.on {border-radius: 15px;color: #fff;background-color: #333;}
 
+.mainText>div>div.tabImg {display: grid;grid-template-columns: repeat(4,1fr);}
+.mainText>div>div.tabImg>img {width: 100%;}
 
 
 
@@ -112,45 +114,6 @@
 
 
 
-
-
-.wrap .mainPicture .picture .moreBtn {
-  border: none;
-  position: absolute;
-  right: 35px;
-  width: 80px;
-  border-radius: 3px;
-  background-color: #eae6e4;
-  transition: 0.5s;
-}
-.wrap .mainPicture .picture .moreBtn:hover {
- transform: scale(1.08);
-}
-
-
-.hoverModal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  height : 80%;
-  background-color: rgba(0, 0, 0,0.4);
-  width: 70%;
-  color: #fff;
-  
-}
-
-
-
-
-
-.tabImg {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-}
-.tabImg>img {
-  width: 100%;
-}
 
 
 
