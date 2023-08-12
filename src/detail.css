@@ -1,5 +1,6 @@
-/*---------- detail style ----------*/
 
+
+/*---------- detail style ----------*/
 
 /* 상단 컨텐츠 */
 .detailContent {width: 1400px;margin: 0 auto 150px;}
@@ -52,6 +53,7 @@
   font-weight: bold;
   margin-bottom: 30px;
 }
+
 
 
 /* 하단 탭 컨텐츠 - 작품 걸어보기 */
@@ -111,6 +113,7 @@
 }
 .detailContent>div.detailTab>div.tabcontent>div.cont>p {font-family: 'NanumSquareNeo-Variable';letter-spacing: 1px;line-height: 25px;}
  
+
 
 
 
