@@ -42,7 +42,7 @@ function Cart() {
   return(
     <div className='cartContent'>
       {/* 상품삭제 모달창 */}
-      { modal == true ? <Countmodal num={num} cart={cart}></Countmodal> : null }
+      { modal == true ? <Modal num={num} cart={cart}></Modal> : null }
 
       <h4>장바구니</h4>
       <ul className='allSelect'>
@@ -74,7 +74,7 @@ function Cart() {
                     <span className='xiarr xi-angle-down-thin' onClick={()=> {
                       dispatch(cartActions.decCount(cart[i].id));
                     }}></span>
-                    { cart[i].count < 1? <Countmodal num={i} cart={cart}></Countmodal> : null}
+                    { cart[i].count < 1? <Modal num={i} cart={cart}></Modal> : null}
                   </div>
                   
                   <div className='priceBtn'>
@@ -92,8 +92,8 @@ function Cart() {
 
         {/* 우측 주문금액 박스 */}
         <div className='rightBox'>
+          <h1>주문금액</h1>
           <div>
-            <h6>주문금액</h6>
             <ul>
               <li>총 상품금액</li>
               <li>{priceSum()}원</li>
@@ -115,14 +115,14 @@ function Cart() {
 
 
 // 상품삭제 모달창 component
-const Countmodal = ({cart, num}) => {
+const Modal = ({cart, num}) => {
 
   let dispatch= useDispatch()
 
   return(
-      <div className='cartModalll'>
-        <div className='cartModalll_fir'>
-          <div className='cartModalll_seco'>
+      <div className='modal'>
+        <div>
+          <div className='modalInner'>
             <h5>"{cart[num].name}" 을 삭제하시겠습니까?</h5>
             <ul>
               <li onClick={()=> {
