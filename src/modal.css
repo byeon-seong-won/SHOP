@@ -1,0 +1,52 @@
+
+
+/*---------- modal style ----------*/
+
+.modal {
+  font-family: 'NanumSquareNeo-Variable';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height : 100%;
+  background-color: rgba(0, 0, 0,0.4);
+  width: 100%;
+  z-index: 1000;
+  overflow-y: hidden;
+}
+.modal>div {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 150px;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  padding: 60px 0;
+}
+.modal>div>div.modalInner {width: 90%;margin: 0 auto;font-size: 20px;}
+.modal>div>div.modalInner>h5 {color: #333;text-transform: uppercase;}
+.modal>div>div.modalInner>ul {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 10px;
+  margin-top: 30px;
+  width: 100%;
+  padding: 0;
+}
+.modal>div>div.modalInner>ul>li {
+  flex: 1;
+  border: 1px solid #666;
+  padding: 15px 0;
+  color: #333;
+  border-radius: 5px;
+}
+.modal>div>div.modalInner>ul>li:hover {
+  background-color: #00b6b8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+
