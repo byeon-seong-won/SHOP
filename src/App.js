@@ -20,27 +20,27 @@ import { Topbtn } from './component/topbtn';
 
 function App () {
 
-  // let [shoes, setShoes] = useState(data)
+  let [shoes, setShoes] = useState(data)
   {/* mysql - node.js 연동 */}
-  const [shoes, setShoes] = useState([
-    {
-      id : '',
-      name : '',
-      count : '',
-      price : ''
-    }
-  ]);
+  // const [shoes, setShoes] = useState([
+  //   {
+  //     id : '',
+  //     name : '',
+  //     count : '',
+  //     price : ''
+  //   }
+  // ]);
 
-  useEffect(()=> {
-    axios.get("http://localhost:3001/api/product")
-      .then((result)=>{
-        setShoes(result.data);
-        // console.log("result" + JSON.stringify(result))
-      })
-      .catch((Error) => {
-        console.log('error')
-      })
-  },[]);
+  // useEffect(()=> {
+  //   axios.get("http://localhost:3001/api/product")
+  //     .then((result)=>{
+  //       setShoes(result.data);
+  //       // console.log("result" + JSON.stringify(result))
+  //     })
+  //     .catch((Error) => {
+  //       console.log('error')
+  //     })
+  // },[]);
   {/* mysql - node.js 연동 */}
 
 
