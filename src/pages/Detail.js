@@ -258,9 +258,9 @@ const Shopmodal = ({pro}) => {
   let dispatch= useDispatch()
 
   return(
-      <div className='cartModalll'>
-        <div className='cartModalll_fir'>
-          <div className='cartModalll_seco'>
+      <div className='modal'>
+        <div>
+          <div className='modalInner'>
             <h5>"{pro.name}" 을 장바구니에 담으시겠습니까?</h5>
             <ul>
               <li onClick={()=> {
@@ -289,9 +289,9 @@ const Secomodal = () => {
   let navi = useNavigate()
 
   return(
-    <div className='cartModalll'>
-      <div className='cartModalll_fir'>
-          <div className='cartModalll_seco'>
+    <div className='modal'>
+      <div>
+          <div className='modalInner'>
             <h5>장바구니로 이동하시겠습니까?</h5>
             <ul>
               <li onClick={()=> {
