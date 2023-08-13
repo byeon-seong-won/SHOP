@@ -43,6 +43,8 @@ function Cart() {
     <div className='cartContent'>
       {/* 상품삭제 모달창 */}
       { modal == true ? <Modal num={num} cart={cart}></Modal> : null }
+      
+
 
       <h4>장바구니</h4>
       <ul className='allSelect'>
