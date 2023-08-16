@@ -60,9 +60,6 @@ button,input{outline: none;}
 
 
 
-
-
-
 /*---------- 공통 컴포넌트 ----------*/
 /* 탑버튼 */
 .faArr {
@@ -73,12 +70,12 @@ button,input{outline: none;}
     height: 50px;
     text-align: center;
     line-height: 50px;
-    color: #333;
+    color: #555;
     font-size: 25px;
     cursor: pointer;
     transform: translateY(5px);
-    border: 2px solid #444;
     border-radius: 50%;
+    background-color: #f0f0f0;
 }
-.faArr:hover {background-color: #333;border: none;color: #fff;}
+
   
