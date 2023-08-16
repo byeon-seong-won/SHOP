@@ -93,13 +93,13 @@
 .mainText>div.tabBtn>button {
   border: none;
   background-color: transparent;
-  font-size: 22px;
+  font-size: 25px;
   cursor: pointer;
-  font-family: 'Caprasimo', cursive;
+  font-family: 'Oleo Script', cursive;
   width: 100px;
 }
-.mainText>div.tabBtn>button.none {border: none;color: #999;}
-.mainText>div.tabBtn>button.on {border-radius: 15px;color: #fff;background-color: #333;}
+.mainText>div.tabBtn>button.none {border: none;color: #aaa;}
+.mainText>div.tabBtn>button.on {color: #333;font-weight: bold;}
 
 .mainText>div>div.tabImg {display: grid;grid-template-columns: repeat(4,1fr);}
 .mainText>div>div.tabImg>img {width: 100%;}
