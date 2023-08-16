@@ -4,7 +4,7 @@
 
 .cartContent {width: 1400px;min-width: 1400px;margin: 0 auto 150px;}
 .cartContent>h4 {font-family: 'NanumSquareNeo-Variable';font-weight: 600;font-size: 48px;color: #333;text-align: center;padding: 60px 0;}
-.cartContent>ul.allSelect {display: flex;column-gap: 15px;cursor: pointer;font-family: 'NanumSquareNeo-Variable';}
+.cartContent>ul.allSelect {display: flex;column-gap: 15px;cursor: pointer;font-family: 'NanumSquareNeo-Variable';padding: 0;}
 .cartContent>div.cartcontWrap {display: flex;}
 
 
@@ -26,7 +26,6 @@
   background-size:100%;
   background-image:url('../public/ckbox.png');
   background-size: cover;
-  border: 1px solid red;
 }
 .cartContent>div.cartcontWrap>div.leftboxWrap>div.leftBox>div.proInfo>input[type="checkbox"]:checked + .ckbox:before {background-image:url('../public/ckbox_ck.png');}
 .cartContent>div.cartcontWrap>div.leftboxWrap>div.leftBox>div.proInfo>input[type="checkbox"] + .ckbox.check:before {background-image:url('../public/ckbox_ck.png');}
