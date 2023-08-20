@@ -129,7 +129,7 @@ const Modal = ({cart, num}) => {
             <ul>
               <li onClick={()=> {
                 dispatch(modalActions.modalOpen(false));
-                dispatch(desmodalActions.desmodalOpen(false));
+                // dispatch(desmodalActions.desmodalOpen(false));
                 document.body.style.overflow = "unset";
               }}>취소</li>
               <li onClick={ ()=> {
