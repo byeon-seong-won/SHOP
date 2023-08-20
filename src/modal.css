@@ -11,7 +11,8 @@
   background-color: rgba(0, 0, 0,0.4);
   width: 100%;
   z-index: 10000;
-  overflow-y: hidden;
+
+  
 }
 .modal>div {
   position: fixed;
