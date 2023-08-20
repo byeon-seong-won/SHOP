@@ -42,9 +42,7 @@ function Cart() {
   return(
     <div className='cartContent'>
       {/* 상품삭제 모달창 */}
-      { modal == true ? <Modal num={num} cart={cart}></Modal> : null }
-      
-
+      { modal == true || desmodal == true ? <Modal num={num} cart={cart}></Modal> : null }
 
       <h4>장바구니</h4>
       <ul className='allSelect'>
@@ -74,9 +72,9 @@ function Cart() {
                     }}></span>
                     <span>{cart[i].count}</span> 
                     <span className='xiarr xi-angle-down-thin' onClick={()=> {
-                      dispatch(cartActions.decCount(cart[i].id));
+                      dispatch(cartActions.decCount(cart[i].id)); 
                     }}></span>
-                    { cart[i].count < 1? <Modal num={i} cart={cart}></Modal> : null}
+                    { cart[i].count < 1? dispatch(desmodalActions.desmodalOpen(true))  : null }
                   </div>
                   
                   <div className='priceBtn'>
@@ -129,7 +127,7 @@ const Modal = ({cart, num}) => {
             <ul>
               <li onClick={()=> {
                 dispatch(modalActions.modalOpen(false));
-                // dispatch(desmodalActions.desmodalOpen(false));
+                dispatch(desmodalActions.desmodalOpen(false));
                 document.body.style.overflow = "unset";
               }}>취소</li>
               <li onClick={ ()=> {
