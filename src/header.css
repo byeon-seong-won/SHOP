@@ -28,3 +28,15 @@ nav>div.navBar>ul>li {
     color: #333;
 }
 nav>div.navBar>ul>li>i {margin-right: 10px;}
+
+
+
+
+
+@media (min-width:360px) and (max-width:767px) {
+    nav>div.mainPop {display: none;}
+    nav>div.navBar {padding: 0 20px;}
+    nav>div.navBar>h1 {font-size: 30px;}
+    
+    
+}
