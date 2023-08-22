@@ -45,11 +45,11 @@ function Cart() {
       { modal == true || desmodal == true ? <Modal num={num} cart={cart}></Modal> : null }
 
       <h4>장바구니</h4>
-      <ul className='allSelect'>
+      {/* <ul className='allSelect'>
         <li onClick={()=> {statuschkbox(); }}>전체선택</li>
         <li>|</li>
         <li onClick={()=> {dispatch(cartActions.remove(cart.id))}}>선택삭제</li>
-      </ul>
+      </ul> */}
       <div className='cartcontWrap'>
         {/* 왼쪽 장바구니 박스 */}
         <div className='leftboxWrap'>
