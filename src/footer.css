@@ -7,3 +7,17 @@
 .footer>hr {color: #fff;width: 100%;margin: 20px 0;}
 .footer>p.footerText {color: #fff;font-family: 'NanumSquareNeo-Variable';line-height: 35px;font-size: 18px;letter-spacing: -0.5px;}
   
+
+
+
+
+
+
+
+
+@media (min-width:360px) and (max-width:767px) {
+
+  .footer {padding:20px}
+  .footer>hr {margin: 0;}
+  .footer>p.footerText {font-size: 16px;}
+}
