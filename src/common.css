@@ -79,3 +79,8 @@ button,input{outline: none;}
 }
 
   
+
+
+@media (min-width:360px) and (max-width:767px) {
+    .faArr {right: 25px;}
+}
