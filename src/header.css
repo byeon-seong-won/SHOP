@@ -37,6 +37,5 @@ nav>div.navBar>ul>li>i {margin-right: 10px;}
     nav>div.mainPop {display: none;}
     nav>div.navBar {padding: 0 20px;}
     nav>div.navBar>h1 {font-size: 30px;}
-    
-    
+    nav>div.navBar>ul>li>i {display: none;}
 }
