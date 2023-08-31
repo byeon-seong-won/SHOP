@@ -2,24 +2,6 @@ import {createSlice} from '@reduxjs/toolkit'
 
 
 
-// 총금액 계산
-// const totalmoneyinitialState = {
-//   total: 0,
-// }
-// let moneySlice = createSlice({
-//   name : 'money',
-//   initialState : totalmoneyinitialState,
-//   reducers : {
-//     prototal(state, action) {
-//       state.total = state.total + action.payload;
-//     },
-//     fintotal(state,action) {
-
-//     }
-//   }
-// })
-
-
 
 
 

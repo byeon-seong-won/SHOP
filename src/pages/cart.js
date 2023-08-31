@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 function Cart() {
   let modal = useSelector((state) => {return state.modal})
   let desmodal = useSelector((state) => {return state.desmodal})
+  let desmodalId = useSelector((state) => {return state.desmodal.id})
   let cart = useSelector((state) => {return state.cart})
   let dispatch = useDispatch()
   let navi = useNavigate()
@@ -42,7 +43,9 @@ function Cart() {
   return(
     <div className='cartContent'>
       {/* 상품삭제 모달창 */}
+      { desmodal == true ? setNum(desmodalId) : null }
       { modal == true || desmodal == true ? <Modal num={num} cart={cart}></Modal> : null }
+
 
       <h4>장바구니</h4>
       {/* <ul className='allSelect'>
@@ -74,7 +77,7 @@ function Cart() {
                     <span className='xiarr xi-angle-down-thin' onClick={()=> {
                       dispatch(cartActions.decCount(cart[i].id)); 
                     }}></span>
-                    { cart[i].count < 1? dispatch(desmodalActions.desmodalOpen(true))  : null }
+                    { cart[i].count < 1? dispatch(desmodalActions.desmodalOpen(true, i)) : null }
                   </div>
                   
                   <div className='priceBtn'>
