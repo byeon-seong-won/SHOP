@@ -2,10 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 
 
 
-
-
-
-
+// 장바구니 상품
 const cartinitialState = 
     [
         {id : 0, name : 'THERE THERE Music Pub', count :1, price :1000},
@@ -15,6 +12,7 @@ let cartSlice = createSlice({
   name : 'cart',
   initialState : cartinitialState,
   reducers : {
+
     incCount(state, action){
         const arr = [...state]
         let idx = state.findIndex((a)=>{ return a.id === action.payload })
@@ -24,16 +22,17 @@ let cartSlice = createSlice({
     decCount(state, action){
       let idx = state.findIndex((a)=>{ return a.id === action.payload })
       state[idx].count--
-    //   if(state[idx].count < 1) {
-    //     alert('안됨')
-    //     state[idx].count = 1;
-    //   }
+      if(state[idx].count < 1) {
+        alert('삭제버튼으로 항목을 삭제해주세요.')
+        state[idx].count = 1;
+      }
     },
 
     // 장바구니 상품 삭제 
     remove(state, action) {
       state.splice(action.payload,1)
     },
+
 
     // 장바구니 상품 담기
     addItem(state,action) {
