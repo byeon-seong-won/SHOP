@@ -1,17 +1,17 @@
 import { useParams, useNavigate} from "react-router-dom"
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch} from 'react-redux'
-import {modalActions, secomodalActions,cartActions} from '../store/store.js'
-import Gallery from '../img.js'
-
+import {addmodalActions, cartActions} from '../store/store.js'
+import data from "../data.js"
+import { AddModal, MoveModal} from '../component/modal.js'
 
 
 const Detail = ({shoes}) => {
 
   let {id} = useParams(null); 
   let [tab, setTab] = useState(0)
-  let modal = useSelector((state) => {return state.modal})
-  let secomodal = useSelector((state) => {return state.secomodal})
+  let addmodal = useSelector((state) => {return state.addmodal})
+  let movemodal = useSelector((state) => {return state.movemodal})
   let [pro,setPro] = useState('0')
   let navi = useNavigate()
   let dispatch = useDispatch()
@@ -24,8 +24,8 @@ const Detail = ({shoes}) => {
   return(
     <>
       {/* 모달창 팝업 */}
-      { modal == true ? <Shopmodal pro={pro}></Shopmodal> : null }
-      { secomodal == true ? <Secomodal></Secomodal> : null }
+      { addmodal == true ? <AddModal pro={pro}></AddModal> : null }
+      { movemodal == true ? <MoveModal></MoveModal> : null }
 
       <div className="detailContent">
         {/* 상단 이미지와 설명 */}
@@ -73,7 +73,7 @@ const Detail = ({shoes}) => {
             }}>구매하기</button> 
             <button className="btn btnCart" onClick={ ()=> {
               let addpro = shoes[id]
-              dispatch(modalActions.modalOpen(true)); 
+              dispatch(addmodalActions.addModal(true)); 
               setPro(addpro)
               document.body.style.overflow = "hidden";
             }}>장바구니 담기</button> 
@@ -110,7 +110,7 @@ const Tabcont = ({tab, shoes}) => {
 
   let [fade1,setFade1] = useState('')
   let [color, setColor] = useState('')
-  let [currImg] = useState(Gallery)
+  let [currImg] = useState(data)
   let [bg, setBg] = useState('')
   let [display, setDisplay] = useState('')
   let [click, clickStatus] = useState(0)
@@ -152,9 +152,9 @@ const Tabcont = ({tab, shoes}) => {
       [
           // 탭컨텐츠1 - 작품감상하기
           <div className="cont">
-            <h2 className="contTitle">작품 걸어보기</h2>
+            <h2 className="contTitle">사진 걸어보기</h2>
             <div className="picBack_inner">
-              <div className="picBackImg" style={{backgroundColor : color, backgroundImage : 'URL(' + bg + ')'}}>
+              <div className="picBackImg" style={{backgroundColor : color, backgroundImage : 'URL(' + bg + ')', backgroundRepeat : "no-repeat", backgroundSize : "contain"}}>
                 <img src={'/pic_' + (thumbimg.id) + 'back_0.png'} className={display}/>
               </div>
               <div className="rightText">
@@ -252,63 +252,7 @@ const Tabcont = ({tab, shoes}) => {
 
 
 
-// 장바구니 담기 모달창 component
-const Shopmodal = ({pro}) => {
 
-  let dispatch= useDispatch()
-
-  return(
-      <div className='modal'>
-        <div>
-          <div className='modalInner'>
-            <h5>"{pro.name}" 을 장바구니에 담으시겠습니까?</h5>
-            <ul>
-              <li onClick={()=> {
-                dispatch(modalActions.modalOpen(false));
-                document.body.style.overflow = "unset";
-              }}>취소</li>
-              <li onClick={ ()=> {
-                dispatch(modalActions.modalOpen(false));
-                dispatch(cartActions.addItem(pro))
-                dispatch(secomodalActions.secoModal(true))
-                document.body.style.overflow = "hidden";
-              }}>확인</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-  )
-}
-
-
-
-// 장바구니 이동 모달창 component
-const Secomodal = () => {
-
-  let dispatch= useDispatch()
-  let navi = useNavigate()
-
-  return(
-    <div className='modal'>
-      <div>
-          <div className='modalInner'>
-            <h5>장바구니로 이동하시겠습니까?</h5>
-            <ul>
-              <li onClick={()=> {
-                dispatch(secomodalActions.secoModal(false));
-                document.body.style.overflow = "unset";
-              }}>취소</li>
-              <li onClick={ ()=> {
-                dispatch(secomodalActions.secoModal(false));
-                document.body.style.overflow = "unset";
-                navi('/cart')
-              }}>확인</li>
-            </ul>
-          </div>
-        </div>
-    </div>
-  )
-}
 
 
 
