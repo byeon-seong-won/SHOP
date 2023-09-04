@@ -1,19 +1,19 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import bg from './main_final_02.png'
-import bg02 from './main_.jpg'
+import { useState } from 'react';
 import Detail from './pages/Detail.js'
 import Cart from './pages/cart.js'
 import { Routes, Route, useNavigate} from 'react-router-dom'
-import axios from 'axios';
-
+// import axios from 'axios';
 import data from './data.js'
 
 
-// 컴포넌트
+
+
+
+// 컴포넌트 import
 import { Footer } from './component/footer';
 import { Nav } from './component/header';
-import { Tabcont } from './component/tabContent';
+import { Tabcont } from './component/maintabContent';
 import { Topbtn } from './component/topbtn';
 
 
@@ -21,6 +21,7 @@ import { Topbtn } from './component/topbtn';
 function App () {
 
   let [shoes, setShoes] = useState(data)
+
   {/* mysql - node.js 연동 */}
   // const [shoes, setShoes] = useState([
   //   {
@@ -62,7 +63,7 @@ function App () {
           {/* main page */}
           <Route path='/' element={
             <>
-              <div className='mainImg' style={ {backgroundImage: 'url(' + bg + ')'}}></div>
+              <div className='mainImg' style={ {backgroundImage: 'url(/main_final_02.png)'}}></div>
               <div className='mainText'>
                 <h4 className='mainTitle'>DAILY PHOTO</h4>
                 <div className="mainPicture">
@@ -78,7 +79,7 @@ function App () {
                   <button className={"mpbtn " + (pagenum == 27 ? "display" : null)} onClick={()=>{setPagenum(pagenum +9)}}>More View</button>
                 </div>     
               </div>
-              <div className='mainImg' style={ {backgroundImage: 'url(' + bg02 + ')'}}></div>
+              <div className='mainImg' style={ {backgroundImage: 'url(/main_.jpg)'}}></div>
               <div className='mainText'>
                 <h4 className='mainTitle'>PHOTO TYPE :</h4>
                 <div className='tabBtn'>
@@ -99,7 +100,7 @@ function App () {
           }/>
           
           {/* detail page */}
-          <Route path="/detail/:id" element={<Detail shoes={shoes} />}/>
+          <Route path="/detail/:id" element={<Detail shoes={shoes}/>}/>
 
           {/* cart page */}
           <Route path='/cart' element={<Cart/>}/> 
