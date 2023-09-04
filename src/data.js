@@ -1,5 +1,8 @@
-let data = 
 
+
+// 상품 항목 배열
+
+let data = 
 [
   {
     id : 0,
