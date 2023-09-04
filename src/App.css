@@ -1,9 +1,6 @@
 @import url(common.css);
-@import url(header.css);
 @import url(detail.css);
-@import url(cart.css);
-@import url(modal.css);
-@import url(footer.css);
+
 
 
 /*---------- mainpage style ----------*/
@@ -101,8 +98,6 @@
 .mainText>div.tabBtn>button.none {border: none;color: #aaa;}
 .mainText>div.tabBtn>button.on {color: #333;font-weight: bold;}
 
-.mainText>div>div.tabImg {display: grid;grid-template-columns: repeat(4,1fr);}
-.mainText>div>div.tabImg>img {width: 100%;}
 
 
 
@@ -113,15 +108,11 @@
 
 @media (min-width:360px) and (max-width:767px) {
   .mainText {padding: 0 20px;}
-  .mainText>div.mainPicture>div {grid-template-columns: repeat(2, 1fr);  }
+  .mainText>div.mainPicture>div {grid-template-columns: repeat(2, 1fr);}
   .mainText>h4.mainTitle {font-size: 30px;margin-bottom: 50px;}
   .mainText>div.mainPicture>button.mpbtn {width: 100px;padding: 5px;font-size: 16px;}
   .mainText>div.tabBtn>button {font-size: 18px;}
   .mainText>div>div.tabImg {grid-template-columns: repeat(2,1fr);}
-
-
-
-
 }
 
 
