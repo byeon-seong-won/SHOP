@@ -3,8 +3,8 @@
 /*---------- detail style ----------*/
 
 /* 상단 컨텐츠 */
-.detailContent {width: 1400px;margin: 0 auto 150px;}
-.detailContent>div.detailCon {margin-top: 80px;display: flex;font-family: 'NanumSquareNeo-Variable';}
+.detailContent {max-width: 1800px;width: 100%;margin: 200px auto 150px;}
+.detailContent>div.detailCon {display: flex;align-items: center;font-family: 'NanumSquareNeo-Variable';justify-content: space-between;}
 .detailContent>div.detailCon>img {width: 50%;}
 .detailContent>div.detailCon>div {width: 40%;}
 .detailContent>div.detailCon>div>h4 {margin-bottom: 30px;font-family: 'Caprasimo', cursive;font-size: 50px;text-transform:uppercase;}
@@ -57,25 +57,26 @@
 
 
 /* 하단 탭 컨텐츠 - 작품 걸어보기 */
-.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner {display: flex !important;justify-content: space-between;height: 800px;}
+.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner {display: flex !important;justify-content: space-between;height: 780px;}
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.picBackImg {
   background-color: #f8f8f8;
   position: relative;
-  width: 65%;
+  width: 100%;
+  height: 100%;
   background-size: cover;
-  background-position: center center;
 }
 
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.picBackImg>img {position: absolute;width: 100%;height: 100%;} 
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.picBackImg>img.display {display: none;}
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText {margin-left: 80px;width: 35%;display: flex;flex-direction: column;}
-.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div>h5 {font-size: 25px;font-family: 'NanumSquareNeo-Variable'; font-weight: bold;}
+.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div>h5 {font-size: 25px;font-family: 'NanumSquareNeo-Variable'; font-weight: bold;margin-top: 0;margin-bottom: 15px;}
+.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div:nth-child(2)>h5 {margin-bottom: 15px;margin-top: 10px;}
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg {flex: 1;}
-.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div {display: grid;grid-template-columns: repeat(3, 1fr);grid-gap: 15px;}
+.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div {display: grid;grid-template-columns: repeat(2, 150px);grid-gap: 15px;}
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div>img {width: 150px;height: 150px;border: 1px solid #ddd;cursor: pointer;}
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div>img.on {border: 1px solid #444;}
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div>img.none {border: 1px solid #ddd;}
-.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgColor>div {display: grid;grid-template-columns: repeat(4, 1fr);grid-gap: 15px;}
+.detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgColor>div {display: grid;grid-template-columns: repeat(3, 100px);grid-gap: 15px;}
 .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgColor>div>span {
   display: inline-block;
   width: 100px;
@@ -140,8 +141,55 @@
 
 
 
+@media (min-width:1440px) {
+  .detailContent {max-width: 1200px;padding: 0 80px;border: 3px solid blue;}
+}
 
+@media (min-width:1280px) and (max-width : 1439.9px) {
+  .detailContent {max-width: 1200px;padding: 0 30px;border: 3px solid red;}
+}
 
+@media (min-width:1024px) and (max-width : 1279.9px) {
+  .detailContent {width: 900px;padding: 0 50px;border: 3px solid purple;}
+  .detailContent>div.detailCon {justify-content: space-around;}
+  .detailContent>div.detailCon>div>h4 {font-size: 38px;text-align: center;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div>img {width: 100px;height: 100px;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div {grid-template-columns: repeat(3, 100px);}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner {height: 589px;}
+}
 
+@media (min-width:768px) and (max-width : 1023.9px) {
+  .detailContent {width: 100%;padding: 0 30px;border: 2px solid green;box-sizing: border-box;margin : 140px auto 0;}
+  .detailContent>div.detailCon>div {width: 80%;}
+  .detailContent>div.detailCon {justify-content: space-around;flex-direction: column;}
+  .detailContent>div.detailCon>div>h4 {font-size: 38px;text-align: center;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner {flex-direction: column;row-gap: 20px;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText {margin-left: 80px;width: 35%;display: flex;flex-direction: row;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText {width: 100%;margin-left: 0;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner {height: 1200px;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.picBackImg {height: 100%;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.picBackImg>img {height: 100%;}
+  
+}
 
-
+@media (min-width:320px) and (max-width : 767.9px) {
+  .detailContent {width: 100%;padding: 0 20px;border: 2px solid pink;box-sizing: border-box;margin : 110px auto 0;}
+  .detailContent>div.detailCon>div {width: 80%;}
+  .detailContent>div.detailCon {justify-content: space-around;flex-direction: column;}
+  .detailContent>div.detailCon>div>h4 {font-size: 38px;text-align: center;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner {flex-direction: column;row-gap: 20px;height: 1200px;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText {margin-left: 0;width: 100%;display: flex;flex-direction: column;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div {display: block;width: 100%;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.picBackImg {height: 100%;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.picBackImg>img {height: 100%;}
+  .detailContent>div.detailTab>div.Tab {height: 80px;background-color: transparent;display: flex;justify-content: space-around;flex-direction: column;}
+  .detailContent>div.detailTab>div.Tab>button {background-color: transparent;width: 100%;margin: 0 auto;padding: 10px 0;max-width: 60%;}
+  .detailContent>div.detailTab>div.Tab>button.on {color: #333;font-weight: bold;border: 1px solid #444;border-radius: 10px;}
+  .detailContent>div.detailTab>div.Tab>button.none {color: #777;font-weight: 500;border: none;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div>img {width: 80px;height: 80px;}
+  .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgImg>div {grid-template-columns: repeat(3, 80px);}
+  .detailContent>div.detailCon>div {width: 100%;}
+  .detailContent>div.detailCon>img {width: 100%;}
+  .detailContent>div.detailTab {margin-top: 100px;}
+  /* .detailContent>div.detailTab>div.tabcontent>div.cont>div.picBack_inner>div.rightText>div.bgColor>div {grid-template-columns: ;} */
+}
