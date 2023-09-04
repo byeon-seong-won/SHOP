@@ -1,14 +1,15 @@
 
 import { useSelector, useDispatch} from 'react-redux'
-import { modalActions, desmodalActions, cartActions} from '../store/store.js'
+import { delmodalActions, cartActions} from '../store/store.js'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {  DelModal } from '../component/modal.js'
+import styled from 'styled-components'
+
 
 
 function Cart() {
-  let modal = useSelector((state) => {return state.modal})
-  let desmodal = useSelector((state) => {return state.desmodal})
-  let desmodalId = useSelector((state) => {return state.desmodal.id})
+  let delmodal = useSelector((state) => {return state.delmodal})
   let cart = useSelector((state) => {return state.cart})
   let dispatch = useDispatch()
   let navi = useNavigate()
@@ -40,11 +41,12 @@ function Cart() {
 
 
 
+
   return(
-    <div className='cartContent'>
+    <CartContent>
       {/* 상품삭제 모달창 */}
-      { desmodal == true ? setNum(desmodalId) : null }
-      { modal == true || desmodal == true ? <Modal num={num} cart={cart}></Modal> : null }
+      {/* { desmodal == true ? setNum(desmodalId) : null } */}
+      { delmodal == true? <DelModal num={num} cart={cart}></DelModal> : null }
 
 
       <h4>장바구니</h4>
@@ -61,7 +63,7 @@ function Cart() {
               return(
                 <div key={i} className='leftBox'>
                   <div className='proInfo'>
-                    <input type="checkbox" id={'name0' + cart[i].id}  onClick={()=> {check == true? setChkbox('check'):setChkbox('')}}/>
+                    <input type="checkbox" id={'name0' + cart[i].id} onClick={()=> {check == true? setChkbox('check'):setChkbox('')}}/>
                     <span className={'ckbox ' + chkbox}></span>
                     <img src={'/pic_' +(cart[i].id+1) + '.png'} className='cartImg'/>
                     <span className='name' onClick={ ()=> {
@@ -77,13 +79,13 @@ function Cart() {
                     <span className='xiarr xi-angle-down-thin' onClick={()=> {
                       dispatch(cartActions.decCount(cart[i].id)); 
                     }}></span>
-                    { cart[i].count < 1? dispatch(desmodalActions.desmodalOpen(true, i)) : null }
+                    {/* { cart[i].count < 1? alert("수량이 없습니다"): null } */}
                   </div>
                   
                   <div className='priceBtn'>
                     <span>{cart[i].price*cart[i].count}원</span>
                     <span className='xiclose xi-close-thin' onClick={()=> {
-                      dispatch(modalActions.modalOpen(true)); setNum(i);
+                      dispatch(delmodalActions.delModal(true)); setNum(i);
                       document.body.style.overflow = "hidden";
                     }}></span>
                   </div>
@@ -112,38 +114,100 @@ function Cart() {
           </div>
         </div>
       </div>
-    </div>
+    </CartContent>
   )
 }
 
 
-// 상품삭제 모달창 component
-const Modal = ({cart, num}) => {
 
-  let dispatch= useDispatch()
 
-  return(
-      <div className='modal'>
-        <div>
-          <div className='modalInner'>
-            <h5>"{cart[num].name}" 을 삭제하시겠습니까?</h5>
-            <ul>
-              <li onClick={()=> {
-                dispatch(modalActions.modalOpen(false));
-                dispatch(desmodalActions.desmodalOpen(false));
-                document.body.style.overflow = "unset";
-              }}>취소</li>
-              <li onClick={ ()=> {
-                dispatch(cartActions.remove(num))
-                dispatch(modalActions.modalOpen(false));
-                document.body.style.overflow = "unset";
-              }}>확인</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-  )
-}
+
+// styled components
+let CartContent = styled.div `
+  width: 1400px;
+  min-width: 1400px;
+  margin: 0 auto 150px;
+  &>h4 {font-family: 'NanumSquareNeo-Variable';font-weight: 600;font-size: 48px;color: #333;text-align: center;padding: 60px 0;}
+  &>.cartcontWrap {
+    display: flex;
+    &>div.leftboxWrap {
+      flex: 1.5;
+      // <---- 왼쪽 장바구니 항목 ---->
+      &>div.leftBox {
+        display: flex;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+        &>div {position: relative;flex: 1;display: flex;align-items: center;}
+        &>div.proInfo {
+          flex: 3;
+          &>input[type="checkbox"] {
+            display: none;
+            &:checked + .ckbox:before {background-image:url('/ckbox_ck.png');}
+            &+.ckbox {position: relative;cursor: pointer;}
+            &+.ckbox:before {
+              content:'';
+              display:inline-block;
+              top: 0;
+              left: 0;
+              width:30px;
+              height:30px;
+              background-size:100%;
+              background-image:url('/ckbox.png');
+              background-size: cover;
+            }
+            &+.ckbox.check:before {background-image:url('/ckbox_ck.png');}
+          }
+          &>img.cartImg {width: 40%;padding-left: 20px;}
+          &>span.name {color: #444;text-transform: uppercase;cursor: pointer;font-size: 20px;}
+        }
+        &>div.countBtn {
+          flex-direction: column;
+          justify-content: center;
+          &>span {
+            font-size: 20px;
+            color: #444;
+            margin : 10px 9;  
+          }
+          &>.xiarr {cursor:pointer;margin: 0;}
+        }
+        &>div.priceBtn {
+          &>span {
+            font-size: 20px;
+            color: #444;
+            margin-right : 20px;
+          }
+          &>span.xiclose {cursor:pointer;margin: 0;}
+        }
+      }
+    }
+    // <---- 오른쪽 가격표 ---->
+    &>div.rightBox {
+      flex: 0.5;
+      height: 250px;
+      margin-left: 30px;
+      margin-top: 100px;
+      padding: 50px;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      &>h1 {font-family: 'NanumSquareNeo-Variable';text-align: center;font-size: 25px;border-bottom: 1px solid #000;padding-bottom:30px;}
+      &>div {
+        margin-top: 30px;
+        &>ul {
+          display: flex;
+          justify-content: space-between;
+          padding-left: 0;
+          &>li {font-family: 'NanumSquareNeo-Variable';}
+        }
+      }
+    }
+`;
+
+
+
+
+
+
 
 
 
