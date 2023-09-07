@@ -3,7 +3,7 @@ import { useSelector, useDispatch} from 'react-redux'
 import { delmodalActions, cartActions} from '../store/store.js'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {  DelModal } from '../component/modal.js'
+import { DelModal } from '../component/modal.js'
 import styled from 'styled-components'
 
 
@@ -202,8 +202,6 @@ let CartContent = styled.div `
       }
     }
 `;
-
-
 
 
 

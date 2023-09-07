@@ -29,7 +29,7 @@ const Footer = () => {
 
 // styled components
 let Footerbox = styled.div `
-  height: 250px;
+  height: auto;
   background-color: #333;
   padding: 40px 60px;
   &>div {
@@ -40,11 +40,18 @@ let Footerbox = styled.div `
       color: #fff;
       font-size: 30px;
       cursor: pointer;
+      @media (min-width:360px) and (max-width:767px) {
+        font-size : 20px;
+      }
       &>.fa_insta {
         font-size: 25px;
         margin-left: 20px;
         transform: translateY(3px);
         cursor: pointer;
+        @media (min-width:360px) and (max-width:767px) {
+          font-size : 20px;
+          margin-left: 10px;
+        }
       }
     }
   } 
@@ -63,7 +70,8 @@ let Footerbox = styled.div `
     font-size: 18px;
     letter-spacing: -0.5px;
     @media (min-width:360px) and (max-width:767px) {
-      font-size: 16px;
+      font-size: 13px;
+      line-height: 20px;
     }
   }
   @media (min-width:360px) and (max-width:767px) {

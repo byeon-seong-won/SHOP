@@ -82,6 +82,7 @@ let Navbox = styled.div `
     height:90px;
     @media (min-width:360px) and (max-width:767px) {
       padding: 0 20px;
+      height : 60px;
     }
     &>h1 {
       font-size: 55px;
@@ -91,7 +92,8 @@ let Navbox = styled.div `
       cursor: pointer;
       font-weight: lighter;
       @media (min-width:360px) and (max-width:767px) {
-        font-size: 30px;
+        font-size: 26px;
+        width: 60%;
       }
     }
     &>ul {
@@ -99,6 +101,10 @@ let Navbox = styled.div `
       width: 20%;
       align-items: center;
       justify-content: space-around;
+      @media (min-width:360px) and (max-width:767px) {
+        width: 40%;
+        padding-left: 0;
+      }
       &>li {
         font-size: 18px;
         cursor: pointer;
@@ -107,6 +113,9 @@ let Navbox = styled.div `
         cursor: pointer;
         font-family: 'Caprasimo', cursive;
         color: #333;
+        @media (min-width:360px) and (max-width:767px) {
+          font-size: 13px;
+        }
         &>i {
           margin-right: 10px;
           @media (min-width:360px) and (max-width:767px) {
