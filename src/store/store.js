@@ -2,7 +2,7 @@ import {configureStore } from '@reduxjs/toolkit'
 import addmodalSlice from './addmodalSlice'
 import movemodalSlice from './movemodalSlice'
 import loginmodalSlice from './loginmodalSlice'
-import { cartSlice }  from './cartSlice'
+import cartSlice from './cartSlice'
 import delmodalSlice from './delmodalSlice'
 
 

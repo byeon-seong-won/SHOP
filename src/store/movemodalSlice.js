@@ -6,6 +6,9 @@ import {createSlice} from '@reduxjs/toolkit'
 const movemodalinitialState = {
   status : false
 }
+
+
+
 let movemodalSlice = createSlice({
   name : 'movemodal',
   initialState : movemodalinitialState,

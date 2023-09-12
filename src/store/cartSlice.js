@@ -3,23 +3,26 @@ import {createSlice} from '@reduxjs/toolkit'
 
 
 // 장바구니 상품
-const cartinitialState = 
-    [
-        {id : 0, name : 'THERE THERE Music Pub', count :1, price :1000},
-        {id : 1, name : "lake house", count : 1, price :2000}
-    ]
+const cartinitialState = [
+  {id : 0, name : 'THERE THERE Music Pub', count :1, price :1000},
+  {id : 1, name : "lake house", count : 1, price :2000}
+]
+
+
+
+
 let cartSlice = createSlice({
   name : 'cart',
   initialState : cartinitialState,
   reducers : {
 
-    incCount(state, action){
+    incCount(state, action) {
         const arr = [...state]
         let idx = state.findIndex((a)=>{ return a.id === action.payload })
         state[idx].count++;
     },
 
-    decCount(state, action){
+    decCount(state, action) {
       let idx = state.findIndex((a)=>{ return a.id === action.payload })
       state[idx].count--
       if(state[idx].count < 1) {
@@ -60,4 +63,4 @@ let cartSlice = createSlice({
 
 
 
-  export {cartSlice} 
+  export default cartSlice
