@@ -9,13 +9,11 @@
 /* 상단 메인 컨텐츠 */
 .mainImg {
   width: 100%;
-  height:0;
+  height:auto;
   padding-top:calc(2000 / 3000 * 100%);
-  max-width: 3000px;
-  background-size : cover;
-  background-position : center center;
-  background-repeat: no-repeat;
+  position: relative;
 }
+.mainImg>img {position: absolute;width: 100%;height: 100%;top: 0;}
 .mainText {padding: 0 50px;margin: 100px auto;max-width: 1600px;}
 .mainText>h4.mainTitle {font-size: 40px;color: #444;margin-bottom: 100px;text-align: center;font-family: 'Caprasimo', cursive;}
 .mainText>div.mainPicture {display: grid;row-gap: 10px;}

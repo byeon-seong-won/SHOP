@@ -65,7 +65,7 @@ function Cart() {
                   <div className='proInfo'>
                     <input type="checkbox" id={'name0' + cart[i].id} onClick={()=> {check == true? setChkbox('check'):setChkbox('')}}/>
                     <span className={'ckbox ' + chkbox}></span>
-                    <img src={process.env.PUBLIC_URL + '/pic_' +(cart[i].id+1) + '.png'} className='cartImg'/>
+                    <img src={'/pic_' +(cart[i].id+1) + '.png'} className='cartImg'/>
                     <span className='name' onClick={ ()=> {
                       navi('/detail/' + cart[i].id)
                     }}>{cart[i].name}</span>

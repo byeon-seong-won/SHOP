@@ -63,7 +63,9 @@ function App () {
           {/* main page */}
           <Route path='/' element={
             <>
-              <div className='mainImg' style={ {backgroundImage: 'url(process.env.PUBLIC_URL + /main_final_02.png )'}}></div>
+              <div className='mainImg'>
+                <img src={'/main_final_02.png'}/>
+              </div>
               <div className='mainText'>
                 <h4 className='mainTitle'>DAILY PHOTO</h4>
                 <div className="mainPicture">
@@ -79,7 +81,9 @@ function App () {
                   <button className={"mpbtn " + (pagenum == 27 ? "display" : null)} onClick={()=>{setPagenum(pagenum +9)}}>More View</button>
                 </div>     
               </div>
-              <div className='mainImg' style={ {backgroundImage: 'url(process.env.PUBLIC_URL + /main_.jpg)'}}></div>
+              <div className='mainImg'>
+              <img src={'/main_.jpg'}/>
+              </div>
               <div className='mainText'>
                 <h4 className='mainTitle'>PHOTO TYPE :</h4>
                 <div className='tabBtn'>
