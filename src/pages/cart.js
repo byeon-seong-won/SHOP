@@ -139,6 +139,7 @@ let CartContent = styled.div `
     color: #333;
     text-align: center;
     padding: 60px 0;
+    margin-bottom : 0;
     @media (min-width:610px) and (max-width : 1024px) {
       font-size : 35px;
       padding-top: 80px;
@@ -167,7 +168,12 @@ let CartContent = styled.div `
         @media (max-width:610px) {
           flex-direction : column;
         }
-        &>div {position: relative;flex: 1;display: flex;align-items: center;}
+        &>div {
+          position: relative;
+          flex: 1;
+          display: flex;
+          align-items: center;
+        }
         &>div.proInfo {
           flex: 3;
           &>input[type="checkbox"] {
@@ -184,27 +190,58 @@ let CartContent = styled.div `
               background-size:100%;
               background-image:url('/ckbox.png');
               background-size: cover;
+              @media (max-width:610px) {
+                display : none;
+              }
             }
             &+.ckbox.check:before {background-image:url('/ckbox_ck.png');}
           }
-          &>img.cartImg {width: 40%;padding-left: 20px;}
-          &>span.name {color: #444;text-transform: uppercase;cursor: pointer;font-size: 20px;}
+          &>img.cartImg {
+            width: 40%;
+            padding-left: 20px;
+            @media (max-width:610px) {
+              width: 45%;
+              padding-left: 0;
+            }
+          }
+          &>span.name {
+            color: #444;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 20px;
+            @media (max-width:610px) {
+              font-size: 16px;
+              display: inline-block;
+              width: 50%;
+            }
+          }
         }
         &>div.countBtn {
           flex-direction: column;
           justify-content: center;
+          @media (max-width:610px) {
+            align-items: end;
+          }
           &>span {
             font-size: 20px;
             color: #444;
             margin : 10px 9;  
           }
           &>.xiarr {cursor:pointer;margin: 0;}
+          @media (max-width:610px) {
+            &>span:nth-child(2) {transform : translateX(-5px);}
+          }
         }
         &>div.priceBtn {
+          justify-content: end;
+          margin-top : 20px;
           &>span {
             font-size: 20px;
             color: #444;
             margin-right : 20px;
+            @media (max-width:610px) {
+              font-size: 16px;
+            }
           }
           &>span.xiclose {cursor:pointer;margin: 0;}
         }
@@ -213,7 +250,7 @@ let CartContent = styled.div `
     // <---- 오른쪽 가격표 ---->
     &>div.rightBox {
       flex: 0.5;
-      margin-left: 30px;
+      margin-left: 80px;
       padding: 50px;
       background-color: #f9f9f9;
       display: flex;
@@ -224,7 +261,16 @@ let CartContent = styled.div `
         box-sizing: border-box;
         margin-left : 0;
       }
-      &>h1 {font-family: 'NanumSquareNeo-Variable';text-align: center;font-size: 25px;border-bottom: 1px solid #000;padding-bottom:30px;}
+      &>h1 {
+        font-family: 'NanumSquareNeo-Variable';
+        text-align: center;
+        font-size: 25px;
+        border-bottom: 1px solid #000;
+        padding-bottom:30px;
+        @media (max-width:610px) {
+          font-size : 22px;
+        }
+      }
       &>div {
         margin-top: 30px;
         &>ul {

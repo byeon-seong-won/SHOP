@@ -115,10 +115,11 @@ let Navbox = styled.div `
         color: #333;
         @media (min-width:360px) and (max-width:767px) {
           font-size: 13px;
+          text-align: right;
         }
         &>i {
           margin-right: 10px;
-          @media (min-width:360px) and (max-width:767px) {
+          @media (max-width:1024px) {
             display: none;
           }
         }
