@@ -155,7 +155,7 @@ const Tabcont = ({tab, shoes}) => {
             <h2 className="contTitle">사진 걸어보기</h2>
             <div className="picBack_inner">
               <div className="picBackImg" style={{backgroundColor : color, backgroundImage : 'URL(' + bg + ')', backgroundRepeat : "no-repeat", backgroundSize : "contain"}}>
-                <img src={'/pic_' + (thumbimg.id) + 'back_0.png'} className={display}/>
+                <img src={process.env.PUBLIC_URL + '/pic_' + (thumbimg.id) + 'back_0.png'} className={display}/>
               </div>
               <div className="rightText">
                 <div className="bgImg">
