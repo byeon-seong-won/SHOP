@@ -124,12 +124,39 @@ function Cart() {
 
 // styled components
 let CartContent = styled.div `
-  width: 1400px;
-  min-width: 1400px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 40px;
+  box-sizing: border-box;
   margin: 0 auto 150px;
-  &>h4 {font-family: 'NanumSquareNeo-Variable';font-weight: 600;font-size: 48px;color: #333;text-align: center;padding: 60px 0;}
+  @media (max-width:610px) {
+    padding: 0 20px;
+  }
+  &>h4 {
+    font-family: 'NanumSquareNeo-Variable';
+    font-weight: 600;
+    font-size: 48px;
+    color: #333;
+    text-align: center;
+    padding: 60px 0;
+    @media (min-width:610px) and (max-width : 1024px) {
+      font-size : 35px;
+      padding-top: 80px;
+    }
+    @media (max-width:767px) {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 30px;
+    }
+    @media (max-width:610px) {
+      font-size : 25px;
+    }
+  }
   &>.cartcontWrap {
     display: flex;
+    align-items: center;
+    @media (max-width:1024px) {
+      flex-direction : column;
+    }
     &>div.leftboxWrap {
       flex: 1.5;
       // <---- 왼쪽 장바구니 항목 ---->
@@ -137,6 +164,9 @@ let CartContent = styled.div `
         display: flex;
         padding: 20px 0;
         border-bottom: 1px solid #ddd;
+        @media (max-width:610px) {
+          flex-direction : column;
+        }
         &>div {position: relative;flex: 1;display: flex;align-items: center;}
         &>div.proInfo {
           flex: 3;
@@ -183,13 +213,17 @@ let CartContent = styled.div `
     // <---- 오른쪽 가격표 ---->
     &>div.rightBox {
       flex: 0.5;
-      height: 250px;
       margin-left: 30px;
-      margin-top: 100px;
       padding: 50px;
       background-color: #f9f9f9;
       display: flex;
       flex-direction: column;
+      @media (max-width:1024px) {
+        width : 100%;
+        margin-top : 100px;
+        box-sizing: border-box;
+        margin-left : 0;
+      }
       &>h1 {font-family: 'NanumSquareNeo-Variable';text-align: center;font-size: 25px;border-bottom: 1px solid #000;padding-bottom:30px;}
       &>div {
         margin-top: 30px;

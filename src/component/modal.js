@@ -131,7 +131,8 @@ let Modal = styled.div`
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 800px;
+    width : 90%;
+    max-width: 800px;
     height: 150px;
     transform: translate(-50%,-50%);
     background-color: #fff;

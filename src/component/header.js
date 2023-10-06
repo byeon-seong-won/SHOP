@@ -81,7 +81,7 @@ let Navbox = styled.div `
     padding: 0 40px;
     height:90px;
     @media (min-width:360px) and (max-width:767px) {
-      padding: 0 20px;
+      padding: 0 30px;
       height : 60px;
     }
     &>h1 {
