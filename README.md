@@ -2,6 +2,11 @@
 : React를 활용한 사진 쇼핑몰 SPA (PWA 셋팅)
 React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하기
 
+
+<h2>Site Map</h2>
+<img width="152" alt="image" src="https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/ef725284-e9f4-45ad-b86b-d50dc5a7260b)"
+
+
 [개인 프로젝트: 2023.06.27~]
 <br>
 <br>
