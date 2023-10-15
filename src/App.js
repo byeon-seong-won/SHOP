@@ -64,7 +64,7 @@ function App () {
           <Route path='/' element={
             <>
               <div className='mainImg'>
-                <img src={'/main_final_02.png'}/>
+                <img src={process.env.PUBLIC_URL + '/main_final_02.png'}/>
               </div>
               <div className='mainText'>
                 <h4 className='mainTitle'>DAILY PHOTO</h4>
@@ -82,7 +82,7 @@ function App () {
                 </div>     
               </div>
               <div className='mainImg'>
-              <img src={'/main_.jpg'}/>
+              <img src={process.env.PUBLIC_URL + '/main_.jpg'}/>
               </div>
               <div className='mainText'>
                 <h4 className='mainTitle'>PHOTO TYPE :</h4>
@@ -145,7 +145,7 @@ let navi = useNavigate()
           setNumb(i)
         }}
         >
-        <img src={'/pic_' + (i+1) + '.png'}/>
+        <img src={process.env.PUBLIC_URL + '/pic_' + (i+1) + '.png'}/>
         { modal == true? <Hovermodal num={numb} shoes={shoes}></Hovermodal> : null}
       </div>
     </div>

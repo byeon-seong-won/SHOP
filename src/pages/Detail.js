@@ -30,7 +30,7 @@ const Detail = ({shoes}) => {
       <div className="detailContent">
         {/* 상단 이미지와 설명 */}
         <div className="detailCon">
-          <img className="product" src={'/pic_' + (shoes[id].id+1) + '.png'} width="100%" />
+          <img className="product" src={process.env.PUBLIC_URL + '/pic_' + (shoes[id].id+1) + '.png'} width="100%" />
           <div>
             <h4>{shoes[id].name}</h4>
             <table>
@@ -155,7 +155,7 @@ const Tabcont = ({tab, shoes}) => {
             <h2 className="contTitle">사진 걸어보기</h2>
             <div className="picBack_inner">
               <div className="picBackImg" style={{backgroundColor : color, backgroundImage : 'URL(' + bg + ')', backgroundRepeat : "no-repeat", backgroundSize : "contain"}}>
-                <img src={'/pic_' + (thumbimg.id) + 'back_0.png'} className={display}/>
+                <img src={process.env.PUBLIC_URL + '/pic_' + (thumbimg.id) + 'back_0.png'} className={display}/>
               </div>
               <div className="rightText">
                 <div className="bgImg">
@@ -164,7 +164,7 @@ const Tabcont = ({tab, shoes}) => {
                     {/* 우측 공간 썸네일 이미지 */}
                     {
                       [1,2,3].map(function(a,i) {
-                        let src = '/pic_' + (thumbimg.id) + 'back_' + i + '.png'
+                        let src = process.env.PUBLIC_URL + '/pic_' + (thumbimg.id) + 'back_' + i + '.png'
                         return(
                           <img src={src} className={ imgclick == i ? 'on' : 'none'} onClick={()=> {
                           setBg(src)
