@@ -1,6 +1,6 @@
 <h1> Shopping Mall</h1>
-: React를 활용한 사진 쇼핑몰 SPA (PWA 셋팅)
-React 온라인 강의를 들으며 제작했던 쇼핑몰 페이지 보강하기
+: React를 활용한 사진 쇼핑몰 SPA 
+
 
 
 <h2>Site Map</h2>
