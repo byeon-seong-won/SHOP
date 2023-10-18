@@ -4,7 +4,8 @@
 
 
 <h2>Site Map</h2>
-<img alt="image" src="https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/ef725284-e9f4-45ad-b86b-d50dc5a7260b)"
+<img alt="image" src="![shopmallpw](https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/caf3ea01-ed87-4bdd-ade6-46ca33a6c2ef)"
+
 
 
 [개인 프로젝트: 2023.06 ~ 2023.07]
