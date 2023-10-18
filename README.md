@@ -4,7 +4,7 @@
 
 
 <h2>Site Map</h2>
-<img alt="image" src="![shopmallpw](https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/caf3ea01-ed87-4bdd-ade6-46ca33a6c2ef)"
+<img alt="image" src="(https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/caf3ea01-ed87-4bdd-ade6-46ca33a6c2ef)"
 
 
 
@@ -26,7 +26,6 @@
 <p>- 상품 더보기 버튼 구현(+준비된 데이터가 끝나면 버튼 없애기)</p>
 <p>- 정렬 버튼 구현(가격순|abc순|cba순|11만원이하|원래대로) {SortBtns.js}</p>
 <p>- 상품 이미지를 클릭하면 해당 상품 Detail page로 이동</p>
-<p>- 재고 데이터 표시</p>
 <p>- top menu 항목 클릭시 해당하는 컨텐츠 표시(페이지 이동/모달창)</p>
 <p>- 로그인(모달창) 정규식 검사(이메일 형식/비밀번호 대문자 포함 체크) {LoginForm.js}</p>
 <p>- useEffect와 addEventListener를 이용한 헤더 스크롤 이벤트 구현</p>
