@@ -7,7 +7,7 @@
 <img alt="image" src="https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/ef725284-e9f4-45ad-b86b-d50dc5a7260b)"
 
 
-[개인 프로젝트: 2023.06.27~]
+[개인 프로젝트: 2023.06 ~ 2023.07]
 <br>
 <br>
 
