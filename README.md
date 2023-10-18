@@ -4,7 +4,7 @@
 
 
 <h2>Site Map</h2>
-<img alt="image" src="(https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/caf3ea01-ed87-4bdd-ade6-46ca33a6c2ef)"
+<img alt="image" src="https://github.com/byeon-seong-won/react.js_shopmall_project/assets/136781516/caf3ea01-ed87-4bdd-ade6-46ca33a6c2ef"
 
 
 
