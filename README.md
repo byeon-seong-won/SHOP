@@ -1,6 +1,7 @@
 <h1> Shopping Mall</h1>
 : React를 활용한 사진 쇼핑몰 SPA 
 [개인 프로젝트: 2023.06 ~ 2023.07]
+<br>
 <img alt="image" src="https://github.com/user-attachments/assets/c1c3a53f-4a58-4516-b2e2-1f2f075b0fd1" style="width:200px;"/>
 <img alt="image" src="https://github.com/user-attachments/assets/f5f9a53f-89ea-418f-b62e-013f4c17afe6" style="width:200px;"/>
 <img alt="image" src="https://github.com/user-attachments/assets/67ce44a2-f908-41a4-86d6-1a76e111b60f" style="width:200px;"/>
