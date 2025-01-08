@@ -1,6 +1,6 @@
 <h1> Shopping Mall</h1>
 : React를 활용한 사진 쇼핑몰 SPA 
-
+[개인 프로젝트: 2023.06 ~ 2023.07]
 
 
 <h2>Site Map</h2>
@@ -9,8 +9,6 @@
 <img alt="image" src="https://github.com/user-attachments/assets/67ce44a2-f908-41a4-86d6-1a76e111b60f" style="width:200px;"/>
 
 
-
-[개인 프로젝트: 2023.06 ~ 2023.07]
 <br>
 <br>
 
